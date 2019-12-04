@@ -6,6 +6,9 @@ public class Tourada {
     protected String NomeEvento;
 
     public Tourada(int assistencia, String data, String nomeEvento) {
+        this.assistencia = assistencia;
+        this.NomeEvento = nomeEvento;
+        this.DATA = data;
     }
     public int getAssistencia() {
         return assistencia;
