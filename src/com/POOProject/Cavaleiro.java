@@ -1,5 +1,8 @@
 package com.POOProject;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Objects;
 
 public class Cavaleiro extends Entidade {
@@ -37,7 +40,15 @@ public class Cavaleiro extends Entidade {
                 ", IDADE=" + IDADE +
                 '}';
     }
-    public void numeroCavaleiros(){
-        System.out.println(nVezes);
+
+    public void numeroCavaleiros() {
+        System.out.println("Numero de cavaleiros existentes: " + nVezes);
+    }
+
+    public static Comparator<Cavaleiro> compareCavaleirobyNome = (o1, o2) -> o1.getNome().compareTo(o2.getNome());
+
+    public ArrayList<Cavaleiro> sortCavaleiroByName(ArrayList<Cavaleiro> A) {
+        Collections.sort(A, Cavaleiro.compareCavaleirobyNome);
+        return A;
     }
 }
