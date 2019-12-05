@@ -36,7 +36,9 @@ public class Local {
         return Nvezes == local.Nvezes &&
                 Objects.equals(localidade, local.localidade);
     }
-
+    public  boolean exists(){
+        return true;
+    }
     @Override
     public String toString() {
         return "Local{" +
@@ -47,7 +49,8 @@ public class Local {
 
     public static Comparator<Local> compareLocalbyNome = (o1, o2) -> o1.getLocalidade().compareTo(o2.getLocalidade());
     public ArrayList<Local> sortEmpregadoByName(ArrayList<Local> A){
-        Collections.sort(A, Local.compareLocalbyNome);
+        A.sort(Local.compareLocalbyNome);
         return A;
     }
+
 }
