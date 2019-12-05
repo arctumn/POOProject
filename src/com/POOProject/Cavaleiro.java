@@ -8,11 +8,21 @@ import java.util.Objects;
 public class Cavaleiro extends Entidade {
     private Local terra;
     private static int nVezes;
+    private int nEspetaculos;
 
-    public Cavaleiro(String nome, int IDADE, Local terra) {
+    public Cavaleiro(String nome, int IDADE, Local terra, int nEspetaculos) {
         super(nome, IDADE);
         nVezes++;
         this.terra = terra;
+        this.nEspetaculos = nEspetaculos;
+    }
+
+    public int getnEspetaculos(){
+        return nEspetaculos;
+    }
+
+    public void setnEspetaculos(int nEspetaculos) {
+        this.nEspetaculos = nEspetaculos;
     }
 
     public Local getTerra() {
@@ -29,7 +39,7 @@ public class Cavaleiro extends Entidade {
         if (!(o instanceof Cavaleiro)) return false;
         if (!super.equals(o)) return false;
         Cavaleiro cavaleiro = (Cavaleiro) o;
-        return Objects.equals(terra, cavaleiro.terra);
+        return (Objects.equals(terra, cavaleiro.terra) && Objects.equals(nEspetaculos, cavaleiro.nEspetaculos));
     }
 
     @Override
@@ -37,7 +47,8 @@ public class Cavaleiro extends Entidade {
         return "Cavaleiro{" +
                 "terra=" + terra +
                 ", nome='" + nome + '\'' +
-                ", IDADE=" + IDADE +
+                ", IDADE=" + IDADE + '\'' +
+                ", Quantidade de Espetáculos=" + nEspetaculos +
                 '}';
     }
 
