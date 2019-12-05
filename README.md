@@ -5,7 +5,7 @@
                         
 [finalteste.txt]() -> Falta por Jar com o Ler
 
-[Empregado.java](https://github.com/arctumn/POOProject/tree/master/src/com/POOProject) -> Pasta com as Classes
+[Pasta Das Classes](https://github.com/arctumn/POOProject/tree/master/src/com/POOProject) -> Pasta com as Classes
 
 [Main.java](https://github.com/arctumn/POOProject/blob/master/src/com/POOProject/Main.java) -> Main file
 
