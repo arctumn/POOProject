@@ -3,7 +3,7 @@
 
 #                       Conteudo
                         
-[finalteste.txt]() -> Falta por Jar com o Ler
+[Jar com a Classe Ler](https://github.com/arctumn/POOProject/blob/master/myinputs.jar) -> Falta por Jar com o Ler
 
 [Pasta Das Classes](https://github.com/arctumn/POOProject/tree/master/src/com/POOProject) -> Pasta com as Classes
 
