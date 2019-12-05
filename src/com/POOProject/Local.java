@@ -1,14 +1,12 @@
 package com.POOProject;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class Local {
-    private int DATA[];
     private int Nvezes;
     private String localidade;
 
     public Local(String localidade) {
-        DATA = new int[3];
         Nvezes = 0;
         this.localidade = localidade;
     }
@@ -21,13 +19,6 @@ public class Local {
         Nvezes = nvezes;
     }
 
-    public int[] getDATA() {
-        return DATA;
-    }
-
-    public void setDATA(int[] DATA) {
-    for(int i = 0; i<DATA.length;i++) this.DATA[i] = DATA[i];
-    }
 
     public String getLocalidade() {
         return localidade;
@@ -43,16 +34,20 @@ public class Local {
         if (!(o instanceof Local)) return false;
         Local local = (Local) o;
         return Nvezes == local.Nvezes &&
-                Arrays.equals(DATA, local.DATA) &&
-                localidade.equals(local.localidade);
+                Objects.equals(localidade, local.localidade);
     }
+
     @Override
     public String toString() {
         return "Local{" +
-                "DATA=" + Arrays.toString(DATA) +
-                ", Nvezes=" + Nvezes +
+                "Nvezes=" + Nvezes +
                 ", localidade='" + localidade + '\'' +
                 '}';
     }
 
+    public static Comparator<Local> compareLocalbyNome = (o1, o2) -> o1.getLocalidade().compareTo(o2.getLocalidade());
+    public ArrayList<Local> sortEmpregadoByName(ArrayList<Local> A){
+        Collections.sort(A, Local.compareLocalbyNome);
+        return A;
+    }
 }
