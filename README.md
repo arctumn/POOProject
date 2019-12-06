@@ -18,15 +18,32 @@ Qualquer coisa que queirão alterar falem no issue associado a cada class ou pel
 
 - [x] -> Tourada.java -> Pedro
 - [x] -> Capeias.java -> Rui 
-- [ ] -> Corridas.java
+- [ ] -> Corridas.java -> LIVRE PARA FAZER
 - [x] -> Entidade.java -> Pedro
-- [ ] -> EspectaculoDeRecortes.java
+- [ ] -> EspectaculoDeRecortes.java -> LIVRE PARA FAZER
 - [x] -> GFA.java -> Luis
 - [x] -> Ganadaria.java -> Luis
-- [ ] -> Largadas.java
+- [ ] -> Largadas.java -> LIVRE PARA FAZER
 - [x] -> Local.java -> Diogo
-- [ ] -> TouradasACorda.java
-- [x] -> Main.java -> Pedro
+- [ ] -> TouradasACorda.java -> LIVRE PARA FAZER
+- [x] -> Main.java -> Pedro (Quem quiser avançar que faça os outros menus enquanto eu termino o das subClasses de touradas,alteraçoes no main entroduzir no meu issue apenas se forem no menu que eu estou a trabalhar)
 - [x] -> Funçoes -> Todos
 - [x] -> INPUT/OUTPUT -> Pedro
-- [ ] -> Outros
+- [ ] -> Outros -> Todos
+
+#Codigo
+
+#### Escrever as alterações para codigos mais eficientes pode ajudar depois
+```
+"```"CODIGO ANTIGO"`´´"                   "```"CODIGO NOVO"```"
+```
+
+
+#Sugestôes:
+
+Adicionem Sugestões aqui:
+-
+-
+-
+-
+-
