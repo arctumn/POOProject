@@ -27,7 +27,7 @@ Qualquer coisa que queirão alterar falem no issue associado a cada class ou pel
 - [x] -> Largadas.java -> Luís
 - [x] -> Local.java -> Diogo
 - [x] -> TouradasACorda.java -> Luís
-- [x] -> Main.java -> Pedro (Quem quiser avançar que faça os outros menus enquanto eu termino o das subClasses de touradas,alteraçoes no main entroduzir no meu issue apenas se forem no menu que eu estou a trabalhar)
+- [x] -> Main.java -> Pedro 
 - [x] -> Funçoes -> Todos
 - [x] -> INPUT/OUTPUT -> Pedro
 - [ ] -> Outros -> Todos
