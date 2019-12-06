@@ -16,17 +16,17 @@ Aquilo que já esta feito ou a priori nao for sofrer alteraçoes colocar um x on
 
 Qualquer coisa que queirão alterar falem no issue associado a cada class ou pelo telegram
 
-- [ ] -> Tourada.java
-- [ ] -> Capeias.java
+- [x] -> Tourada.java -> Pedro
+- [x] -> Capeias.java -> Rui 
 - [ ] -> Corridas.java
-- [ ] -> Entidade.java
+- [x] -> Entidade.java -> Pedro
 - [ ] -> EspectaculoDeRecortes.java
-- [ ] -> GFA.java
-- [ ] -> Ganadaria.java
+- [x] -> GFA.java -> Luis
+- [x] -> Ganadaria.java -> Luis
 - [ ] -> Largadas.java
-- [ ] -> Local.java
+- [x] -> Local.java -> Diogo
 - [ ] -> TouradasACorda.java
-- [ ] -> Main.java
-- [ ] -> Funçoes
-- [ ] -> INPUT/OUTPUT
+- [x] -> Main.java -> Pedro
+- [x] -> Funçoes -> Todos
+- [x] -> INPUT/OUTPUT -> Pedro
 - [ ] -> Outros
