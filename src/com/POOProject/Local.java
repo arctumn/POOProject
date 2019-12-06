@@ -63,7 +63,7 @@ public class Local {
     }
 
     public static Comparator<Local> compareLocalbyNome = (o1, o2) -> o1.getLocalidade().compareTo(o2.getLocalidade());
-    public ArrayList<Local> sortEmpregadoByName(ArrayList<Local> A){
+    public ArrayList<Local> sortLocalByName(ArrayList<Local> A){
         A.sort(Local.compareLocalbyNome);
         return A;
     }
