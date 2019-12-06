@@ -21,11 +21,12 @@ Qualquer coisa que queirão alterar falem no issue associado a cada class ou pel
 - [x] -> Corridas.java -> Rui
 - [x] -> Entidade.java -> Pedro
 - [ ] -> EspectaculoDeRecortes.java -> Diogo
-- [x] -> GFA.java -> Luis
-- [x] -> Ganadaria.java -> Luis
-- [ ] -> Largadas.java -> LIVRE PARA FAZER
+- [x] -> GFA.java -> Luís
+- [x] -> Ganadaria.java -> Luís
+- [x] -> Toiros.java -> Luís
+- [x] -> Largadas.java -> Luís
 - [x] -> Local.java -> Diogo
-- [ ] -> TouradasACorda.java -> LIVRE PARA FAZER
+- [x] -> TouradasACorda.java -> Luís
 - [x] -> Main.java -> Pedro (Quem quiser avançar que faça os outros menus enquanto eu termino o das subClasses de touradas,alteraçoes no main entroduzir no meu issue apenas se forem no menu que eu estou a trabalhar)
 - [x] -> Funçoes -> Todos
 - [x] -> INPUT/OUTPUT -> Pedro
