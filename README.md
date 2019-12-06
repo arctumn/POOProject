@@ -32,7 +32,7 @@ Qualquer coisa que queirão alterar falem no issue associado a cada class ou pel
 - [x] -> INPUT/OUTPUT -> Pedro
 - [ ] -> Outros -> Todos
 
-#Codigo
+# Codigo
 
 #### Escrever as alterações para codigos mais eficientes pode ajudar depois
 ```
