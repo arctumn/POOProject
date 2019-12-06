@@ -46,7 +46,7 @@ Qualquer coisa que queirão alterar falem no issue associado a cada class ou pel
 public static Comparator<NomeDaClass> compareNomeDaClassbyNome = (o1, o2) -> o1.getNomeEvento().compareTo(o2.getNomeEvento());
 ```
 
-#Sugestôes:
+# Sugestões:
 
 Adicionem Sugestões aqui:
 -
