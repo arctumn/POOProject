@@ -241,10 +241,9 @@ public class Main {
                                         pos++;
                                     }
                                     if (s1.equals("Touradas a Corda")){
-                                        System.out.println("Intruduza uma assistencia");
                                         System.out.println("Uma data");
                                         System.out.println("Um nome para a tourada");
-                                        Tourada t = new Tourada(Ler.umInt(),Ler.umaString(),Ler.umaString());
+                                        Tourada t = new Tourada(0,Ler.umaString(),Ler.umaString());
                                         System.out.println("Qual local?");
                                         s2 = Ler.umaString();
                                         Local l = findLocalByName(s2,locais);
@@ -298,10 +297,9 @@ public class Main {
                                         pos++;
                                     }
                                     if (s1.equals("Largada")){
-                                        System.out.println("Intruduza uma assistencia");
                                         System.out.println("Uma data");
                                         System.out.println("Um nome para a tourada");
-                                        Tourada t = new Tourada(Ler.umInt(),Ler.umaString(),Ler.umaString());
+                                        Tourada t = new Tourada(0,Ler.umaString(),Ler.umaString());
                                         System.out.println("Qual local?");
                                         s2 = Ler.umaString();
                                         Local l = findLocalByName(s2,locais);
