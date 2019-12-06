@@ -18,7 +18,7 @@ Qualquer coisa que queirão alterar falem no issue associado a cada class ou pel
 
 - [x] -> Tourada.java -> Pedro
 - [x] -> Capeias.java -> Rui 
-- [ ] -> Corridas.java -> LIVRE PARA FAZER
+- [x] -> Corridas.java -> Rui
 - [x] -> Entidade.java -> Pedro
 - [ ] -> EspectaculoDeRecortes.java -> LIVRE PARA FAZER
 - [x] -> GFA.java -> Luis
