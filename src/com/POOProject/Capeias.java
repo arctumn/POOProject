@@ -45,6 +45,10 @@ public class Capeias extends Tourada {
         }else System.out.println("Nao tem mais bilhetes para remover");
        
     }
+    public void percentagem() {
+        int aux = (this.bilhete / this.total) * 100;
+        System.out.println("A assistência foi de " + aux + "%");
+    }
 
     @Override
     public String toString() {
