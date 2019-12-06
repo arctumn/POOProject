@@ -20,7 +20,7 @@ Qualquer coisa que queirão alterar falem no issue associado a cada class ou pel
 - [x] -> Capeias.java -> Rui 
 - [x] -> Corridas.java -> Rui
 - [x] -> Entidade.java -> Pedro
-- [ ] -> EspectaculoDeRecortes.java -> LIVRE PARA FAZER
+- [ ] -> EspectaculoDeRecortes.java -> Diogo
 - [x] -> GFA.java -> Luis
 - [x] -> Ganadaria.java -> Luis
 - [ ] -> Largadas.java -> LIVRE PARA FAZER
@@ -38,6 +38,13 @@ Qualquer coisa que queirão alterar falem no issue associado a cada class ou pel
 "```"CODIGO ANTIGO"`´´"                   "```"CODIGO NOVO"```"
 ```
 
+# ToADD
+
+## Adicionem isto as classes que sao subClasses de Tourada e alterar o NomeDaClass para a class especifica
+
+```
+public static Comparator<NomeDaClass> compareNomeDaClassbyNome = (o1, o2) -> o1.getNomeEvento().compareTo(o2.getNomeEvento());
+```
 
 #Sugestôes:
 
