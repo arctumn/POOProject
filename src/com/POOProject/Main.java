@@ -4,25 +4,54 @@ import com.myinputs.Ler;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Main {
-    public static Local findLocalByName(String s, ArrayList<Local> locais) {
-        for (Local local : locais)
-            if (local.getLocalidade().equals(s)) {
+    private static Local findLocalByName(String s, ArrayList<Local> locais) {
+        for (Local local : locais){
+            if (local.getLocalidade().equals(s))
                 return local;
             }
         return null;
     }
-
-    public static Tourada findTouradaByName(String s, ArrayList<Tourada> touradas) {
-        for (Tourada tourada : touradas)
-            if (tourada.getNomeEvento().equals(s)) {
+    private static Tourada findTouradaByName(String s, ArrayList<Tourada> touradas) {
+        for (Tourada tourada : touradas){
+            if (tourada.getNomeEvento().equals(s))
                 return tourada;
             }
         return null;
     }
-
+    private static EspectaculoDeRecortes findEspectaculoDeRecortesByName(String s, ArrayList<EspectaculoDeRecortes>er){
+        for (EspectaculoDeRecortes E : er){
+            if(E.getNomeEvento().equals(s)) return E;
+        }
+        return null;
+    }
+    private static  Corridas findCorridasByName(String s, ArrayList<Corridas>corridas){
+        for (Corridas corrida : corridas){
+            if (corrida.getNomeEvento().equals(s)) return corrida;
+        }
+        return null;
+    }
+    private static Largadas findLargadasByName(String s, ArrayList<Largadas> largadas){
+        for (Largadas largada : largadas){
+            if(largada.getNomeEvento().equals(s)) return largada;
+        }
+        return null;
+    }
+    private static Capeias findCapeiasByName(String s2, ArrayList<Capeias> capeias) {
+        for (Capeias capeia : capeias){
+            if (capeia.getNomeEvento().equals(s2))
+                return capeia;
+            }
+        return null;
+    }
+    private static TouradasACorda findTouradasACordabyName(String s, ArrayList<TouradasACorda> tcs){
+        for (TouradasACorda tc : tcs){
+            if (tc.getNomeEvento().equals(s))
+                return tc;
+        }
+        return null;
+    }
     public static void main(String[] args) {
         FileInputStream is1, is2, is3, is4;
         ObjectInputStream obIP1, obIP2, obIP3, obIP4;
@@ -264,7 +293,7 @@ public class Main {
                                             l = findLocalByName(s2,locais);
                                         }
                                         corridas.add(pos,new Corridas(t,l));
-                                        Corridas.sort(Corridas.compareCorridasbyNome);
+                                        corridas.sort(Corridas.compareCorridasbyNome);
                                         System.out.println("Adicionou a tourada " +t.getNomeEvento());
                                         pos++;
                                     }
@@ -289,7 +318,7 @@ public class Main {
                                     }
                                     // Adptar as outras 4 classes para o modelo Capeia e introduzir sort
                                     // public static Comparator<NomeDaClass> compareNomeDaClassbyNome = (o1, o2) -> o1.getNomeEvento().compareTo(o2.getNomeEvento());
-                                    // Ainda falta dar output para o ficheiro que contem structs de touradas
+                                    // Ainda falta dar output para o ficheiro que contem subclasses de touradas
                                     // falta enfiar os cavaleiros / GFA nestes grupos
                                     // Luis se possivel insereos nas classes que eu ponho no main
 
@@ -346,7 +375,7 @@ public class Main {
                                     if(s.equals("Corrida")) {
                                         System.out.println("Qual o nome do evento?");
                                         s2 = Ler.umaString();
-                                        Corridas classeATrablhar = findClasseABByName(s2, corridas);
+                                        Corridas classeATrablhar = findCorridasByName(s2, corridas);
                                         if (classeATrablhar != null) {
                                             System.out.println("Quer comprar ou vender bilhetes?");
                                             if (Ler.umaString().equals("comprar")) {
@@ -377,44 +406,10 @@ public class Main {
                                             break;
                                         }
                                     }
-                                    if(s.equals("Largada")) {
-                                        System.out.println("Qual o nome do evento?");
-                                        s2 = Ler.umaString();
-                                        Largadas classeATrablhar = findLargadasByName(s2, largadas);
-                                        if (classeATrablhar != null) {
-                                            System.out.println("Quer comprar ou vender bilhetes?");
-                                            if (Ler.umaString().equals("comprar")) {
-                                                System.out.println("Quantos?");
-                                                dumbvar = Ler.umInt();
-                                                dumbvar2 = classeATrablhar.getBilhete();
-                                                classeATrablhar.comprabilhete(dumbvar);
-                                                if (classeATrablhar.getBilhete() != dumbvar)
-                                                    System.out.println("Comprou "+dumbvar2+" bilhetes");
-                                                break;
-                                            }
-                                            else if (Ler.umaString().equals("vender")) {
-                                                System.out.println("Quantos?");
-                                                dumbvar = Ler.umInt();
-                                                dumbvar2 = classeATrablhar.getBilhete();
-                                                classeATrablhar.removerbilhete(dumbvar);
-                                                if (classeATrablhar.getBilhete() != dumbvar)
-                                                    System.out.println("Vendeu "+dumbvar2+" bilhetes");
-                                                break;
-                                            }
-                                            else {
-                                                System.out.println("Nao existe essa operação");
-                                                break;
-                                            }
-
-                                        } else{
-                                            System.out.println("Nao existe essa tourada");
-                                            break;
-                                        }
-                                    }
                                     if(s.equals("EspectalucoDeRecortes")) {
                                         System.out.println("Qual o nome do evento?");
                                         s2 = Ler.umaString();
-                                        EspectaculoDeRecortes classeATrablhar = findEspectaculoDeRecortesyName(s2, espetaculodeRecortes);
+                                        EspectaculoDeRecortes classeATrablhar = findEspectaculoDeRecortesByName(s2, espetaculodeRecortes);
                                         if (classeATrablhar != null) {
                                             System.out.println("Quer comprar ou vender bilhetes?");
                                             if (Ler.umaString().equals("comprar")) {
@@ -521,4 +516,4 @@ public class Main {
                 }
             } while (sWvar != -1) ;
         }
-    }
+}

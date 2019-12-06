@@ -1,5 +1,7 @@
 package com.POOProject;
 
+import java.util.Comparator;
+
 public class Capeias extends Tourada {
     private int bilhete = 0;
     private int total = 0;
