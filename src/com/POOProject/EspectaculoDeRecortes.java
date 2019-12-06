@@ -81,5 +81,4 @@ public class EspectaculoDeRecortes extends Tourada {
     }
 
     public static Comparator<EspectaculoDeRecortes> compareEspectaculoDeRecortesbyNome = (o1, o2) -> o1.getNomeEvento().compareTo(o2.getNomeEvento());
-
 }
