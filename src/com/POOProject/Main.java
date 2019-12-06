@@ -57,7 +57,7 @@ public class Main {
         ObjectInputStream obIP1, obIP2, obIP3, obIP4;
         FileOutputStream os1, os2, os3, os4;
         ObjectOutputStream obOS1, obOS2, obOS3, obOS4;
-        int pos = 0,dumbvar,dumbvar2;
+        int pos = 0,posFix=0,dumbvar,dumbvar2;
         String s, s1,s2;
         ArrayList<Local> locais = new ArrayList<Local>();
         ArrayList<Tourada> touradas = new ArrayList<Tourada>();
@@ -177,7 +177,7 @@ public class Main {
                                     for (EspectaculoDeRecortes espectaculoDeRecorte : espetaculodeRecortes)
                                         if (espectaculoDeRecorte.getLocal().equals(classeAVer.getLocalidade())) {
                                             touradas2.add(espectaculoDeRecorte);
-                                        }
+                                         }
                                     System.out.println("Estas sao as touradas dessa Localidade: "+touradas2.toString());
                                         break;
                                 }
@@ -313,6 +313,29 @@ public class Main {
                                         largadas.sort(Largadas.compareLargadasbyNome);
                                         System.out.println("Adicionou a tourada " +t.getNomeEvento());
                                         pos++;
+                                        for(Capeias capeia : capeias)
+                                            if(findTouradaByName(capeia.getNomeEvento(),touradas) == null)
+                                                touradas.add(capeia);
+                                        for(Largadas largada : largadas)
+                                            if(findTouradaByName(largada.getNomeEvento(),touradas) == null)
+                                                touradas.add(largada);
+                                        for(TouradasACorda touradasACorda : touradasACordas)
+                                            if(findTouradaByName(touradasACorda.getNomeEvento(),touradas) == null)
+                                                touradas.add(touradasACorda);
+                                        for(EspectaculoDeRecortes er : espetaculodeRecortes)
+                                            if(findTouradaByName(er.getNomeEvento(),touradas) == null)
+                                                touradas.add(er);
+                                        for(Corridas corrida : corridas)
+                                            if(findTouradaByName(corrida.getNomeEvento(),touradas) == null)
+                                                touradas.add(corrida);
+                                    }
+                                    try {
+                                        os2 = new FileOutputStream(f2);
+                                        obOS2 = new ObjectOutputStream(os2);
+                                        obOS2.writeObject(touradas);
+                                        os2.close();
+                                    }catch (IOException e){
+                                        System.out.println(e.getMessage());
                                     }
                                     // Adptar as outras 4 classes para o modelo Capeia e introduzir sort
                                     // public static Comparator<NomeDaClass> compareNomeDaClassbyNome = (o1, o2) -> o1.getNomeEvento().compareTo(o2.getNomeEvento());
