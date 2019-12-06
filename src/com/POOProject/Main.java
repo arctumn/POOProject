@@ -53,10 +53,10 @@ public class Main {
         return null;
     }
     public static void main(String[] args) {
-        FileInputStream is1, is2, is3, is4;
-        ObjectInputStream obIP1, obIP2, obIP3, obIP4;
-        FileOutputStream os1, os2, os3, os4;
-        ObjectOutputStream obOS1, obOS2, obOS3, obOS4;
+        FileInputStream is1, is2, is3, is4,is5,is6;
+        ObjectInputStream obIP1, obIP2, obIP3, obIP4,obIP5,obIP6;
+        FileOutputStream os1, os2, os3, os4,os5,os6;
+        ObjectOutputStream obOS1, obOS2, obOS3, obOS4,obOS5,obOS6;
         int pos = 0,posFix=0,dumbvar,dumbvar2;
         String s, s1,s2;
         ArrayList<Local> locais = new ArrayList<Local>();
@@ -72,9 +72,11 @@ public class Main {
         // ArrayList<NotDefinedYet> NotDefinedYet = new ArrayList<NotDefinedYet>();
         // ArrayList<NotDefinedYet> NotDefinedYet = new ArrayList<NotDefinedYet>();
         File f1 = new File("fichLocais.dat");
-        File f2 = new File("fichTouradas.dat");
-        File f3 = new File("fichidk.dat");
-        File f4 = new File("fichidk2.dat");
+        File f2 = new File("fichCapeias.dat");
+        File f3 = new File("fichCorridas.dat");
+        File f4 = new File("fichLargadas.dat");
+        File f5 = new File("fichEspecRec.dat");
+        File f6 = new File("fichTouradasACorda.dat");
         try {
             is1 = new FileInputStream(f1);
             obIP1 = new ObjectInputStream(is1);
@@ -82,16 +84,24 @@ public class Main {
             is1.close();
             is2 = new FileInputStream(f2);
             obIP2 = new ObjectInputStream(is2);
-            touradas = (ArrayList<Tourada>) obIP2.readObject();
+            capeias = (ArrayList<Capeias>) obIP2.readObject();
             is2.close();
             is3 = new FileInputStream(f3);
             obIP3 = new ObjectInputStream(is3);
-            //NDF = (ArrayList<Tourada>) obIP2.readObject();
+            corridas = (ArrayList<Corridas>) obIP3.readObject();
             is3.close();
             is4 = new FileInputStream(f4);
             obIP4 = new ObjectInputStream(is4);
-            // NDF = (ArrayList<NDF>) obIP2.readObject();
+            largadas = (ArrayList<Largadas>) obIP4.readObject();
             is4.close();
+            is5 = new FileInputStream(f5);
+            obIP5 = new ObjectInputStream(is5);
+            espetaculodeRecortes = (ArrayList<EspectaculoDeRecortes>) obIP5.readObject();
+            is5.close();
+            is6 = new FileInputStream(f6);
+            obIP6 = new ObjectInputStream(is6);
+            touradasACordas = (ArrayList<TouradasACorda>) obIP6.readObject();
+            is6.close();
         } catch (IOException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
         }
@@ -481,27 +491,29 @@ public class Main {
                                 }
                                 default:{
                                     System.out.println("Saiu do menu das localidades");
-                                    for(Capeias capeia : capeias)
-                                        if(findTouradaByName(capeia.getNomeEvento(),touradas) == null)
-                                            touradas.add(capeia);
-                                    for(Largadas largada : largadas)
-                                        if(findTouradaByName(largada.getNomeEvento(),touradas) == null)
-                                            touradas.add(largada);
-                                    for(TouradasACorda touradasACorda : touradasACordas)
-                                        if(findTouradaByName(touradasACorda.getNomeEvento(),touradas) == null)
-                                            touradas.add(touradasACorda);
-                                    for(EspectaculoDeRecortes er : espetaculodeRecortes)
-                                        if(findTouradaByName(er.getNomeEvento(),touradas) == null)
-                                            touradas.add(er);
-                                    for(Corridas corrida : corridas)
-                                        if(findTouradaByName(corrida.getNomeEvento(),touradas) == null)
-                                            touradas.add(corrida);
+
                                 }
                                 try {
                                     os2 = new FileOutputStream(f2);
                                     obOS2 = new ObjectOutputStream(os2);
-                                    obOS2.writeObject(touradas);
+                                    obOS2.writeObject(capeias);
                                     os2.close();
+                                    os3 = new FileOutputStream(f3);
+                                    obOS3 = new ObjectOutputStream(os3);
+                                    obOS3.writeObject(corridas);
+                                    os3.close();
+                                    os4 = new FileOutputStream(f4);
+                                    obOS4 = new ObjectOutputStream(os4);
+                                    obOS4.writeObject(largadas);
+                                    os4.close();
+                                    os5 = new FileOutputStream(f5);
+                                    obOS5 = new ObjectOutputStream(os5);
+                                    obOS5.writeObject(espetaculodeRecortes);
+                                    os5.close();
+                                    os6 = new FileOutputStream(f6);
+                                    obOS6 = new ObjectOutputStream(os6);
+                                    obOS6.writeObject(touradasACordas);
+                                    os6.close();
                                 }catch (IOException e){
                                     System.out.println(e.getMessage());
                                 }
