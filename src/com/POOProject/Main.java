@@ -296,46 +296,23 @@ public class Main {
                                         System.out.println("Adicionou a tourada " +t.getNomeEvento());
                                         pos++;
                                     }
-                                    if (s1.equals("Largada")){
+                                    if (s1.equals("Largada")) {
                                         System.out.println("Uma data");
                                         System.out.println("Um nome para a tourada");
-                                        Tourada t = new Tourada(0,Ler.umaString(),Ler.umaString());
+                                        Tourada t = new Tourada(0, Ler.umaString(), Ler.umaString());
                                         System.out.println("Qual local?");
                                         s2 = Ler.umaString();
-                                        Local l = findLocalByName(s2,locais);
-                                        while(l == null){
+                                        Local l = findLocalByName(s2, locais);
+                                        while (l == null) {
                                             System.out.println("Esse local nao existe");
                                             System.out.println("Introduza outro");
                                             s2 = Ler.umaString();
-                                            l = findLocalByName(s2,locais);
+                                            l = findLocalByName(s2, locais);
                                         }
-                                        largadas.add(pos,new Largadas(t,l));
+                                        largadas.add(pos, new Largadas(t, l));
                                         largadas.sort(Largadas.compareLargadasbyNome);
-                                        System.out.println("Adicionou a tourada " +t.getNomeEvento());
+                                        System.out.println("Adicionou a tourada " + t.getNomeEvento());
                                         pos++;
-                                        for(Capeias capeia : capeias)
-                                            if(findTouradaByName(capeia.getNomeEvento(),touradas) == null)
-                                                touradas.add(capeia);
-                                        for(Largadas largada : largadas)
-                                            if(findTouradaByName(largada.getNomeEvento(),touradas) == null)
-                                                touradas.add(largada);
-                                        for(TouradasACorda touradasACorda : touradasACordas)
-                                            if(findTouradaByName(touradasACorda.getNomeEvento(),touradas) == null)
-                                                touradas.add(touradasACorda);
-                                        for(EspectaculoDeRecortes er : espetaculodeRecortes)
-                                            if(findTouradaByName(er.getNomeEvento(),touradas) == null)
-                                                touradas.add(er);
-                                        for(Corridas corrida : corridas)
-                                            if(findTouradaByName(corrida.getNomeEvento(),touradas) == null)
-                                                touradas.add(corrida);
-                                    }
-                                    try {
-                                        os2 = new FileOutputStream(f2);
-                                        obOS2 = new ObjectOutputStream(os2);
-                                        obOS2.writeObject(touradas);
-                                        os2.close();
-                                    }catch (IOException e){
-                                        System.out.println(e.getMessage());
                                     }
                                     // Adptar as outras 4 classes para o modelo Capeia e introduzir sort
                                     // public static Comparator<NomeDaClass> compareNomeDaClassbyNome = (o1, o2) -> o1.getNomeEvento().compareTo(o2.getNomeEvento());
@@ -504,17 +481,33 @@ public class Main {
                                 }
                                 default:{
                                     System.out.println("Saiu do menu das localidades");
-                                    try{
-                                        os2 = new FileOutputStream(f2);
-                                        obOS2 = new ObjectOutputStream(os2);
-                                        obOS2.writeObject(touradas);
-                                        os2.close();
-                                    }catch(IOException e){
-                                        System.out.println(e.getMessage());
-                                    }
+                                    for(Capeias capeia : capeias)
+                                        if(findTouradaByName(capeia.getNomeEvento(),touradas) == null)
+                                            touradas.add(capeia);
+                                    for(Largadas largada : largadas)
+                                        if(findTouradaByName(largada.getNomeEvento(),touradas) == null)
+                                            touradas.add(largada);
+                                    for(TouradasACorda touradasACorda : touradasACordas)
+                                        if(findTouradaByName(touradasACorda.getNomeEvento(),touradas) == null)
+                                            touradas.add(touradasACorda);
+                                    for(EspectaculoDeRecortes er : espetaculodeRecortes)
+                                        if(findTouradaByName(er.getNomeEvento(),touradas) == null)
+                                            touradas.add(er);
+                                    for(Corridas corrida : corridas)
+                                        if(findTouradaByName(corrida.getNomeEvento(),touradas) == null)
+                                            touradas.add(corrida);
+                                }
+                                try {
+                                    os2 = new FileOutputStream(f2);
+                                    obOS2 = new ObjectOutputStream(os2);
+                                    obOS2.writeObject(touradas);
+                                    os2.close();
+                                }catch (IOException e){
+                                    System.out.println(e.getMessage());
+                                }
                                     sB = -1;
                                 }
-                            }
+
                         }while (sB != -1) ;
                         //fazer em 2
                         break;
