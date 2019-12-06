@@ -55,4 +55,6 @@ public class Corridas extends Tourada {
         return "Corridas{" + "Tourada:" + super.getNomeEvento() +",  \n Local:"+this.local+ ", \n Total de Bilhetes=" + this.bilhete+ "\n Data:"+super.getDATA()+'}';
     }
     
+     public static Comparator<Corridas> compareCorridasbyNome = (o1, o2) -> o1.getNomeEvento().compareTo(o2.getNomeEvento());
+    
 }
