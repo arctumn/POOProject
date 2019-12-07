@@ -9,7 +9,7 @@ public class EspectaculoDeRecortes extends Tourada implements Serializable {
     private String local;
 
     public EspectaculoDeRecortes(Tourada t, Local l) {
-        super(t.getAssistencia(),t.getNomeEvento(),t.getDATA());
+        super(t.getAssistencia(),t.getDATA(),t.getNomeEvento());
         this.total = t.getAssistencia();
         this.local = l.getLocalidade();
     }
@@ -42,6 +42,7 @@ public class EspectaculoDeRecortes extends Tourada implements Serializable {
         int aux = this.bilhete+n;
         if (aux <= this.total) {
             this.bilhete=this.bilhete+n;
+            System.out.println("Comprou: "+n+" bilhetes");
         }else System.out.println("Nao temos bilhetes suficientes");
 
     }
@@ -49,6 +50,7 @@ public class EspectaculoDeRecortes extends Tourada implements Serializable {
         int aux = this.bilhete-n;
         if (aux <= this.total && aux>0) {
             this.bilhete=this.bilhete-n;
+            System.out.println("Vendeu: "+n+" bilhetes");
         }else System.out.println("Nao tem mais bilhetes para remover");
 
     }

@@ -7,7 +7,7 @@ public class Largadas extends Tourada implements Serializable {
     private String local;
 
     public Largadas(Tourada t, Local l) {
-        super(t.getAssistencia(),t.getNomeEvento(),t.getDATA());
+        super(t.getAssistencia(),t.getDATA(),t.getNomeEvento());
         this.local = l.getLocalidade();
     }
 
@@ -21,7 +21,12 @@ public class Largadas extends Tourada implements Serializable {
 
     @Override
     public String toString() {
-        return "Largada{" + "Tourada:" + super.getNomeEvento() +",  \n Local:"+this.local + "\n Data:"+super.getDATA()+'}';
+        return "Largadas{" +
+                "local='" + local + '\'' +
+                ", DATA='" + DATA + '\'' +
+                ", NomeEvento='" + NomeEvento + '\'' +
+                ", nDeTouradas=" + nDeTouradas +
+                '}';
     }
 
     public static Comparator<Largadas> compareLargadasbyNome = (o1, o2) -> o1.getNomeEvento().compareTo(o2.getNomeEvento());
