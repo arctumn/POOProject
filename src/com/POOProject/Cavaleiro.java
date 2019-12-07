@@ -1,11 +1,12 @@
 package com.POOProject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Objects;
 
-public class Cavaleiro extends Entidade {
+public class Cavaleiro extends Entidade  implements Serializable {
     private Local terra;
     private static int nVezes;
     private int nEspetaculos;

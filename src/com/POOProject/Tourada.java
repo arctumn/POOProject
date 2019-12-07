@@ -1,8 +1,9 @@
 package com.POOProject;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Tourada {
+public class Tourada implements Serializable {
     protected int assistencia;
     protected String DATA;
     protected String NomeEvento;

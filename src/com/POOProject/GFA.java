@@ -1,11 +1,12 @@
 package com.POOProject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Objects;
 
-public class GFA extends Entidade {
+public class GFA extends Entidade implements Serializable {
     private Local terra;
     private String Fcara;
     private static int nVezes;

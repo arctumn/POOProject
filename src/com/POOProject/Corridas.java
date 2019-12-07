@@ -1,8 +1,9 @@
 package com.POOProject;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
-public class Corridas extends Tourada {
+public class Corridas extends Tourada implements Serializable {
     private int bilhete = 0;
     private int total = 0;
     private String local;

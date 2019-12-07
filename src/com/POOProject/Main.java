@@ -3,6 +3,7 @@ package com.POOProject;
 import com.myinputs.Ler;
 
 import java.io.*;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class Main {
@@ -57,7 +58,7 @@ public class Main {
         ObjectInputStream obIP1, obIP2, obIP3, obIP4,obIP5,obIP6;
         FileOutputStream os1, os2, os3, os4,os5,os6;
         ObjectOutputStream obOS1, obOS2, obOS3, obOS4,obOS5,obOS6;
-        int pos = 0,posFix=0,dumbvar,dumbvar2;
+        int pos = 0,dumbvar,dumbvar2;
         String s, s1,s2;
         ArrayList<Local> locais = new ArrayList<Local>();
         ArrayList<Tourada> touradas = new ArrayList<Tourada>();
@@ -103,7 +104,7 @@ public class Main {
             touradasACordas = (ArrayList<TouradasACorda>) obIP6.readObject();
             is6.close();
         } catch (IOException | ClassNotFoundException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Algum ficheiro está vazio");
         }
         int sWvar = 0, sB = 0;
         do {
@@ -116,12 +117,12 @@ public class Main {
             switch (sWvar) {
                 case 1: {
                     do {
-                        sB = Ler.umInt();
                         System.out.println("Pressione 1 para Adicionar 1 novo local");
                         System.out.println("Pressione 2 para remover 1 local pelo nome");
                         System.out.println("Pressione 3 para Vizualizar 1 local");
                         System.out.println("Pressione 4 para Mostar todos os locais");
                         System.out.println("Pressione 5 para pesquisar uma tourada pelo local");
+                        sB = Ler.umInt();
                         switch (sB) {
                             case 1: {
                                 System.out.println("Nome do Novo local");
@@ -132,10 +133,9 @@ public class Main {
                                 }
                                 System.out.println("Qual Pais?");
                                 s1 = Ler.umaString();
-                                locais.add(pos, new Local(s, s1));
+                                locais.add( new Local(s, s1));
                                 locais.sort(Local.compareLocalbyNome);
                                 System.out.println("Adicionou " + s + " no pais " + s1);
-                                pos++;
                                 break;
                             }
                             case 2: {
@@ -213,12 +213,13 @@ public class Main {
                     }
                     case 2: {
                         do {
-                            sB = Ler.umInt();
+
                             System.out.println("Pressione 1 para Adicionar 1 nova tourada");
                             System.out.println("Pressione 2 para remover 1 tourada pelo nome");
                             System.out.println("Pressione 3 para comprar ou vender bilhetes");
                             System.out.println("Pressione 4 para ver 1 tourada pelo nome");
                             System.out.println("Pressione 5 para mostrar todas as touradas");
+                            sB = Ler.umInt();
                             switch (sB) {
                                 case 1: {
                                     System.out.println("Nome da Nova tourada");
@@ -227,15 +228,12 @@ public class Main {
                                         System.out.println("Ja existe " + s);
                                         break;
                                     }
-                                    do {
                                         System.out.println("Qual tipo de Tourada?");
                                         s1 = Ler.umaString();
-                                    }while(!s1.equals("Corrida") || !s1.equals("Largada") || !s1.equals("Espetaculo de Recortes") || !s1.equals("Touradas a Corda") || !s1.equals("Capeias"));
                                     if (s1.equals("Capeia")){
                                         System.out.println("Intruduza uma assistencia");
                                         System.out.println("Uma data");
-                                        System.out.println("Um nome para a tourada");
-                                        Tourada t = new Tourada(Ler.umInt(),Ler.umaString(),Ler.umaString());
+                                        Tourada t = new Tourada(Ler.umInt(),Ler.umaString(),s);
                                         System.out.println("Qual local?");
                                         s2 = Ler.umaString();
                                         Local l = findLocalByName(s2,locais);
@@ -448,7 +446,7 @@ public class Main {
                                             break;
                                         }
                                     }
-                                    if(s.equals("TouradasACorda")) {
+                                   /* if(s.equals("TouradasACorda")) {
                                         System.out.println("Qual o nome do evento?");
                                         s2 = Ler.umaString();
                                         TouradasACorda classeATrablhar = findTouradasACordabyName(s2, touradasACordas);
@@ -480,8 +478,8 @@ public class Main {
                                         } else{
                                             System.out.println("Nao existe essa tourada");
                                             break;
-                                        }
-                                    }
+                                        }*/
+
                                     else System.out.println("Nao existe esse evento");
                                     break;
                                 }
@@ -515,7 +513,7 @@ public class Main {
                                     obOS6.writeObject(touradasACordas);
                                     os6.close();
                                 }catch (IOException e){
-                                    System.out.println(e.getMessage());
+                                    System.out.println("Dei um erro a Escrever "+e.getMessage());
                                 }
                                     sB = -1;
                                 }

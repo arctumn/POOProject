@@ -1,8 +1,9 @@
 package com.POOProject;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
-public class TouradasACorda extends Tourada {
+public class TouradasACorda extends Tourada implements Serializable {
     private String local;
 
     public TouradasACorda(Tourada t, Local l) {

@@ -1,8 +1,9 @@
 package com.POOProject;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Entidade {
+public class Entidade implements Serializable {
     protected String nome;
     protected int IDADE; //idade pode ser o ano de formaçao ou a idade
 

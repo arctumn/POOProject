@@ -1,8 +1,9 @@
 package com.POOProject;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class Local {
+public class Local implements Serializable {
     private int Nvezes;
     private String localidade;
     private String pais;
