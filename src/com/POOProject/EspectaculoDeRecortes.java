@@ -22,7 +22,7 @@ public class EspectaculoDeRecortes extends Tourada implements Serializable {
         this.bilhete = bilhete;
     }
 
-    public void setLocal(String local) {
+    public void setLocal1(String local) {
         this.local = local;
     }
 
@@ -56,7 +56,7 @@ public class EspectaculoDeRecortes extends Tourada implements Serializable {
     }
     public void percentagem() {
         int aux = (this.bilhete / this.total) * 100;
-        System.out.println("A assistência foi de " + aux + "%");
+        System.out.println("A assistência atual é de " + aux + "%");
     }
 
     @Override
@@ -68,7 +68,6 @@ public class EspectaculoDeRecortes extends Tourada implements Serializable {
                 ", assistencia=" + assistencia +
                 ", DATA='" + DATA + '\'' +
                 ", NomeEvento='" + NomeEvento + '\'' +
-                ", nDeTouradas=" + nDeTouradas +
                 '}';
     }
 

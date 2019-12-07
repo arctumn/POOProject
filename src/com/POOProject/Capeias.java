@@ -89,7 +89,6 @@ public class Capeias extends Tourada implements Serializable {
                 ", assistencia=" + assistencia +
                 ", DATA='" + DATA + '\'' +
                 ", NomeEvento='" + NomeEvento + '\'' +
-                ", nDeTouradas=" + nDeTouradas +
                 '}';
     }
 

@@ -64,7 +64,6 @@ public class Tourada implements Serializable {
                 "assistencia=" + assistencia +
                 ", DATA='" + DATA + '\'' +
                 ", NomeEvento='" + NomeEvento + '\'' +
-                ", nDeTouradas=" + nDeTouradas +
                 '}';
     }
 }

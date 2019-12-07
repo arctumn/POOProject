@@ -41,9 +41,7 @@ public class Local implements Serializable {
 
     @Override
     public String toString() {
-        return "Local{" +
-                "Nvezes=" + Nvezes +
-                ", localidade='" + localidade + '\'' +
+        return "Local{" + "localidade='" + localidade + '\'' +
                 ", pais='" + pais + '\'' +
                 '}';
     }

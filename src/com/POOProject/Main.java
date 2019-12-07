@@ -123,16 +123,15 @@ public class Main {
         touradas3.addAll(espetaculodeRecortes);
         sayTouradas(capeias,corridas,touradasACordas,largadas,espetaculodeRecortes);
         //O codigo dentro destes comentarios é de debug mas serve para verficar o conteudo dos ficheiros
-        int sWvar, sB;
+        int sWvar, sB,z1;
         do {
             System.out.println("Pressione 1 para ir para o Menu das Regioes Dos Eventos");
             System.out.println("Pressione 2 para ir para o Menu das Touradas");
             System.out.println("Pressione 3 para ir para o Menu dos Participantes");
-            System.out.println("Pressione 4 para Consultar por Datas os Eventos");
             System.out.println("Pressione qualquer outra tecla para encerrar");
             sWvar = Ler.umInt();
             switch (sWvar) {
-                case 1: {
+                    case 1: {
                     do {
                         System.out.println("Pressione 1 para Adicionar 1 novo local");
                         System.out.println("Pressione 2 para remover 1 local pelo nome");
@@ -235,19 +234,19 @@ public class Main {
                     }
                     case 2: {
                         do {
-
                             System.out.println("Pressione 1 para Adicionar 1 nova tourada");
                             System.out.println("Pressione 2 para remover 1 tourada pelo nome");
                             System.out.println("Pressione 3 para comprar ou vender bilhetes");
                             System.out.println("Pressione 4 para ver 1 tourada pelo nome");
                             System.out.println("Pressione 5 para mostrar todas as touradas");
-                            System.out.println("Pressione qualquer outra tecla para sair");
+                            System.out.println("Pressione 6 para alterar um evento");
+                            System.out.println("Pressione qualquer outro numero para sair");
                             sB = Ler.umInt();
                             switch (sB) {
                                 case 1: {
                                     System.out.println("Nome da Nova tourada");
                                     s = Ler.umaString();
-                                    if (findTouradaByName(s, touradas) != null) {
+                                    if (findTouradaByName(s, touradas3) != null) {
                                         System.out.println("Ja existe " + s);
                                         break;
                                     }
@@ -265,102 +264,112 @@ public class Main {
                                         while(l == null){
                                             System.out.println("Esse local nao existe");
                                             System.out.println("Introduza outro");
+                                            locais.forEach(l1-> System.out.println(l1.getLocalidade()));
                                             s2 = Ler.umaString();
                                             l = findLocalByName(s2,locais);
                                         }
-                                        capeias.add(pos,new Capeias(t,l));
+                                        capeias.add(new Capeias(t,l));
                                         touradas3.add(new Capeias(t,l));
                                         capeias.sort(Capeias.compareCapeiasbyNome);
                                         System.out.println("Adicionou a tourada " +t.getNomeEvento());
-                                        pos++;
                                     }
-                                    if (s1.equals("Touradas a Corda")){
+                                    if (s1.equals("Tourada a Corda")){
                                         System.out.println("Uma data");
                                         Tourada t = new Tourada(0,Ler.umaString(),s);
                                         System.out.println("Qual local?");
-                                        System.out.println(locais);
+                                        locais.forEach(l-> System.out.println(l.getLocalidade()));
                                         s2 = Ler.umaString();
                                         Local l = findLocalByName(s2,locais);
                                         while(l == null){
                                             System.out.println("Esse local nao existe");
                                             System.out.println("Introduza outro");
+                                            locais.forEach(l1-> System.out.println(l1.getLocalidade()));
                                             s2 = Ler.umaString();
                                             l = findLocalByName(s2,locais);
                                         }
-                                        touradasACordas.add(pos,new TouradasACorda(t,l));
+                                        touradasACordas.add(new TouradasACorda(t,l));
                                         touradas3.add(new TouradasACorda(t,l));
                                         touradasACordas.sort(TouradasACorda.compareTouradasACordabyNome);
                                         System.out.println("Adicionou a tourada " +t.getNomeEvento());
-                                        pos++;
                                     }
                                     if (s1.equals("Espetaculo de Recortes")){
                                         System.out.println("Intruduza uma assistencia");
                                         System.out.println("Uma data");
                                         Tourada t = new Tourada(Ler.umInt(),Ler.umaString(),s);
                                         System.out.println("Qual local?");
-                                        System.out.println(locais);
+                                        locais.forEach(l-> System.out.println(l.getLocalidade()));
                                         s2 = Ler.umaString();
                                         Local l = findLocalByName(s2,locais);
                                         while(l == null){
                                             System.out.println("Esse local nao existe");
                                             System.out.println("Introduza outro");
+                                            locais.forEach(l1-> System.out.println(l1.getLocalidade()));
                                             s2 = Ler.umaString();
                                             l = findLocalByName(s2,locais);
                                         }
-                                        espetaculodeRecortes.add(pos,new EspectaculoDeRecortes(t,l));
+                                        espetaculodeRecortes.add(new EspectaculoDeRecortes(t,l));
                                         touradas3.add(new EspectaculoDeRecortes(t,l));
                                         espetaculodeRecortes.sort(EspectaculoDeRecortes.compareEspectaculoDeRecortesbyNome);
                                         System.out.println("Adicionou a tourada " +t.getNomeEvento());
-                                        pos++;
                                     }
-                                    if (s1.equals("Corridas")){
+                                    if (s1.equals("Corrida")){
                                         System.out.println("Intruduza uma assistencia");
                                         System.out.println("Uma data");
                                         Tourada t = new Tourada(Ler.umInt(),Ler.umaString(),s);
                                         System.out.println("Qual local?");
-                                        System.out.println(locais);
+                                        locais.forEach(l-> System.out.println(l.getLocalidade()));
                                         s2 = Ler.umaString();
                                         Local l = findLocalByName(s2,locais);
                                         while(l == null){
                                             System.out.println("Esse local nao existe");
                                             System.out.println("Introduza outro");
+                                            locais.forEach(l1-> System.out.println(l1.getLocalidade()));
                                             s2 = Ler.umaString();
                                             l = findLocalByName(s2,locais);
                                         }
-                                        corridas.add(pos,new Corridas(t,l));
+                                        corridas.add(new Corridas(t,l));
                                         touradas3.add(new Corridas(t,l));
                                         corridas.sort(Corridas.compareCorridasbyNome);
                                         System.out.println("Adicionou a tourada " +t.getNomeEvento());
-                                        pos++;
                                     }
                                     if (s1.equals("Largada")) {
-                                        System.out.println("Intruduza uma assistencia");
                                         System.out.println("Uma data");
                                         Tourada t = new Tourada(0,Ler.umaString(),s);
                                         System.out.println("Qual local?");
-                                        System.out.println(locais);
+                                        locais.forEach(l-> System.out.println(l.getLocalidade()));
                                         s2 = Ler.umaString();
                                         Local l = findLocalByName(s2,locais);
                                         while(l == null){
                                             System.out.println("Esse local nao existe");
                                             System.out.println("Introduza outro");
+                                            locais.forEach(l1-> System.out.println(l1.getLocalidade()));
                                             s2 = Ler.umaString();
                                             l = findLocalByName(s2,locais);
                                         }
-                                        largadas.add(pos, new Largadas(t, l));
-                                        touradas.add(new Largadas(t,l));
+                                        largadas.add( new Largadas(t, l));
+                                        touradas3.add(new Largadas(t,l));
                                         largadas.sort(Largadas.compareLargadasbyNome);
                                         System.out.println("Adicionou a tourada " + t.getNomeEvento());
-                                        pos++;
                                     }
                                     break;
                                 }
                                 case 2: {
                                     System.out.println("Nome da tourada a remover?");
+                                    touradas3.forEach(t3 -> System.out.println(t3.getNomeEvento()));
                                     s = Ler.umaString();
                                     Tourada classeARemover = findTouradaByName(s,touradas3);
                                     if (classeARemover != null) {
-                                        touradas.remove(classeARemover);
+                                        if (classeARemover instanceof Capeias)
+                                            capeias.remove(classeARemover);
+                                        else if(classeARemover instanceof EspectaculoDeRecortes)
+                                            espetaculodeRecortes.remove(classeARemover);
+                                        else if(classeARemover instanceof Largadas)
+                                            largadas.remove(classeARemover);
+                                        else if(classeARemover instanceof Corridas)
+                                            corridas.remove(classeARemover);
+                                        else if(classeARemover instanceof TouradasACorda)
+                                            touradasACordas.remove(classeARemover);
+                                        touradas3.remove(classeARemover);
                                         System.out.println("Removeu " + s);
                                         break;
                                     } else System.out.println("Nao existe essa Tourada");
@@ -368,7 +377,7 @@ public class Main {
                                 }
                                 case 3: {
                                     System.out.println("Que tipo de tourada?");
-                                    System.out.println("Corrida\tCapeia\tEspetaculodeRecortes");
+                                    System.out.println("Corrida\tCapeia\tEspetaculoDeRecortes");
                                     s = Ler.umaString();
                                     if(s.equals("Capeia")) {
                                         capeias.forEach(ca-> System.out.println(ca.getNomeEvento()));
@@ -384,6 +393,7 @@ public class Main {
                                                 classeATrablhar.comprabilhete(dumbvar);
                                                 if (classeATrablhar.getBilhete() != dumbvar)
                                                 System.out.println("Comprou "+dumbvar2+" bilhetes");
+                                                classeATrablhar.percentagem();
                                                 break;
                                             }
                                             else if (Ler.umaString().equals("vender")) {
@@ -393,6 +403,7 @@ public class Main {
                                                 classeATrablhar.removerbilhete(dumbvar);
                                                 if (classeATrablhar.getBilhete() != dumbvar)
                                                     System.out.println("Vendeu "+dumbvar2+" bilhetes");
+                                                classeATrablhar.percentagem();
                                                 break;
                                             }
                                             else {
@@ -419,6 +430,7 @@ public class Main {
                                                 classeATrablhar.comprabilhete(dumbvar);
                                                 if (classeATrablhar.getBilhete() != dumbvar)
                                                     System.out.println("Comprou "+dumbvar2+" bilhetes");
+                                                classeATrablhar.percentagem();
                                                 break;
                                             }
                                             else if (Ler.umaString().equals("vender")) {
@@ -428,6 +440,7 @@ public class Main {
                                                 classeATrablhar.removerbilhete(dumbvar);
                                                 if (classeATrablhar.getBilhete() != dumbvar)
                                                     System.out.println("Vendeu "+dumbvar2+" bilhetes");
+                                                classeATrablhar.percentagem();
                                                 break;
                                             }
                                             else {
@@ -440,7 +453,7 @@ public class Main {
                                             break;
                                         }
                                     }
-                                    if(s.equals("EspetalucoDeRecortes")) {
+                                    if(s.equals("EspetaculoDeRecortes")) {
                                         espetaculodeRecortes.forEach(e-> System.out.println(e.getNomeEvento()));
                                         System.out.println("Qual o nome do evento?");
                                         s2 = Ler.umaString();
@@ -450,13 +463,21 @@ public class Main {
                                             if (Ler.umaString().equals("comprar")) {
                                                 System.out.println("Quantos?");
                                                 dumbvar = Ler.umInt();
+                                                dumbvar2 = classeATrablhar.getBilhete();
                                                 classeATrablhar.comprabilhete(dumbvar);
+                                                if (classeATrablhar.getBilhete() != dumbvar)
+                                                    System.out.println("Comprou "+dumbvar2+" bilhetes");
+                                                classeATrablhar.percentagem();
                                                 break;
                                             }
                                             else if (Ler.umaString().equals("vender")) {
                                                 System.out.println("Quantos?");
                                                 dumbvar = Ler.umInt();
+                                                dumbvar2 = classeATrablhar.getBilhete();
                                                 classeATrablhar.removerbilhete(dumbvar);
+                                                if (classeATrablhar.getBilhete() != dumbvar)
+                                                    System.out.println("Comprou "+dumbvar2+" bilhetes");
+                                                classeATrablhar.percentagem();
                                                 break;
                                             }
                                             else {
@@ -488,7 +509,57 @@ public class Main {
                                         System.out.println("Nao existem touradas");
                                         break;
                                     }
-                                    System.out.println(touradas3);
+                                    touradas3.forEach(t -> System.out.println(t.toString()));
+                                    break;
+                                }
+                                case 6: {
+                                    System.out.println("Qual o nome do evento");
+                                    sayTouradas(capeias,corridas,touradasACordas,largadas,espetaculodeRecortes);
+                                    s = Ler.umaString();
+                                    Tourada elementoAMecher = findTouradaByName(s,touradas3);
+                                    if(elementoAMecher == null){
+                                        System.out.println("Nao existe: "+s);
+                                        break;
+                                    }
+                                    do{
+                                        System.out.println("Pressione 1 para mudar o nome");
+                                        System.out.println("Pressione 2 para mudar os assentos maximos");
+                                        System.out.println("Pressione 3 mudar a data");
+                                        System.out.println("Pressione outro numero para sair");
+                                        dumbvar2 = Ler.umInt();
+                                        switch (dumbvar2){
+                                            case 1:{
+                                                System.out.println("Qual o novo nome?");
+                                                s = Ler.umaString();
+                                                elementoAMecher.setNomeEvento(s);
+                                                System.out.println("Mudou para o nome: "+s);
+                                                break;
+                                            }
+
+                                            case 2:{
+                                                if(!(elementoAMecher instanceof Corridas) || !(elementoAMecher instanceof Capeias) || !(elementoAMecher instanceof EspectaculoDeRecortes)){
+                                                    System.out.println("Esse evento nao tem assistencia limite");
+                                                    break;
+                                                }
+                                                System.out.println("Para quanto quer alterar a lotação?");
+                                                z1 = Ler.umInt();
+                                                elementoAMecher.setAssistencia(z1);
+                                                System.out.println("Alterou para "+z1);
+                                                break;
+                                            }
+                                            case 3:{
+                                                System.out.println("Para que data pretende alterar?");
+                                                elementoAMecher.setDATA(Ler.umaString());
+                                                System.out.println("Alterou a data para "+elementoAMecher.getDATA());
+                                                break;
+                                            }
+                                            default:{
+                                                System.out.println("Saiu do menu das alterações");
+                                                dumbvar2 = -1;
+                                                break;
+                                            }
+                                        }
+                                    }while(dumbvar2 != -1);
                                     break;
                                 }
                                 default:{
@@ -520,20 +591,13 @@ public class Main {
                                 }
                                     sB = -1;
                                 }
-
                         }while (sB != -1) ;
                         //fazer em 2
                         break;
                     }
-
                     case 3: {
                         //fazer em 3
                         System.out.println(3);
-                        break;
-                    }
-                    case 4: {
-                        //fazer em 4
-                        System.out.println(4);
                         break;
                     }
                     default: {

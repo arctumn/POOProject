@@ -25,7 +25,6 @@ public class TouradasACorda extends Tourada implements Serializable {
                 "local='" + local + '\'' +
                 ", DATA='" + DATA + '\'' +
                 ", NomeEvento='" + NomeEvento + '\'' +
-                ", nDeTouradas=" + nDeTouradas +
                 '}';
     }
 
