@@ -15,9 +15,9 @@ public class Corridas extends Tourada implements Serializable {
         super(t.getAssistencia(),t.getDATA(),t.getNomeEvento());
         this.total = t.getAssistencia();
         this.local = l.getLocalidade();
-        /*gfa = new ArrayList<>();
+        gfa = new ArrayList<>();
         ga = new ArrayList<>();
-        ca = new ArrayList<>();*/
+        ca = new ArrayList<>();
         //esses ainda nao estao implementados nas outras classes portanto desativei no contrutor
     }
 

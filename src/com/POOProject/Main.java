@@ -60,14 +60,13 @@ public class Main {
         return null;
     }
     public static void main(String[] args) {
-        FileInputStream is1, is2, is3, is4,is5,is6;
-        ObjectInputStream obIP1, obIP2, obIP3, obIP4,obIP5,obIP6;
-        FileOutputStream os1, os2, os3, os4,os5,os6;
-        ObjectOutputStream obOS1, obOS2, obOS3, obOS4,obOS5,obOS6;
-        int pos = 0,dumbvar,dumbvar2;
+        FileInputStream is1, is2, is3, is4,is5,is6,is7,is8,is9,is10;
+        ObjectInputStream obIP1, obIP2, obIP3, obIP4,obIP5,obIP6,obIP7,obIP8,obIP9,obIP10;
+        FileOutputStream os1, os2, os3, os4,os5,os6,os7,os8,os9,os10;
+        ObjectOutputStream obOS1, obOS2, obOS3, obOS4,obOS5,obOS6,obOS7,obOS8,obOS9,obOS10;
+        int dumbvar,dumbvar2;
         String s, s1,s2;
         ArrayList<Local> locais = new ArrayList<>();
-        ArrayList<Tourada> touradas = new ArrayList<>();
         ArrayList<Tourada> touradas2 = new ArrayList<>();
         ArrayList<Tourada> touradas3 = new ArrayList<>();
         ArrayList<Capeias> capeias = new ArrayList<>();
@@ -75,14 +74,20 @@ public class Main {
         ArrayList<Corridas> corridas = new ArrayList<>();
         ArrayList<Largadas> largadas = new ArrayList<>();
         ArrayList<TouradasACorda> touradasACordas = new ArrayList<>();
-
-        // ArrayList<NotDefinedYet> NotDefinedYet = new ArrayList<NotDefinedYet>();
+        ArrayList<Toiros> toiros = new ArrayList<>();
+        ArrayList<GFA> gfas = new ArrayList<>();
+        ArrayList<Ganadaria> ganadarias = new ArrayList<>();
+        ArrayList<Cavaleiro> cavaleiros = new ArrayList<>();
         File f1 = new File("fichLocais.dat");
         File f2 = new File("fichCapeias.dat");
         File f3 = new File("fichCorridas.dat");
         File f4 = new File("fichLargadas.dat");
         File f5 = new File("fichEspecRec.dat");
         File f6 = new File("fichTouradasACorda.dat");
+        File f7 = new File("fichGFA.dat");
+        File f8 = new File("fichGanadaria.dat");
+        File f9 = new File("fichCavaleiros.dat");
+        File f10 = new File("fichToiros.dat");
         try {
             is1 = new FileInputStream(f1);
             obIP1 = new ObjectInputStream(is1);
@@ -108,6 +113,22 @@ public class Main {
             obIP6 = new ObjectInputStream(is6);
             touradasACordas = (ArrayList<TouradasACorda>) obIP6.readObject();
             is6.close();
+            is7 = new FileInputStream(f7);
+            obIP7 = new ObjectInputStream(is7);
+            gfas = (ArrayList<GFA>) obIP7.readObject();
+            is7.close();
+            is8 = new FileInputStream(f8);
+            obIP8 = new ObjectInputStream(is8);
+            ganadarias = (ArrayList<Ganadaria>) obIP8.readObject();
+            is8.close();
+            is9 = new FileInputStream(f9);
+            obIP9 = new ObjectInputStream(is9);
+            cavaleiros = (ArrayList<Cavaleiro>) obIP9.readObject();
+            is9.close();
+            is10 = new FileInputStream(f10);
+            obIP10 = new ObjectInputStream(is10);
+            toiros = (ArrayList<Toiros>)obIP10.readObject();
+            is10.close();
         } catch (IOException | NullPointerException e) {
              System.out.println("Existe ficheiros vazios");
             }catch (ClassNotFoundException e){
@@ -128,6 +149,7 @@ public class Main {
             System.out.println("Pressione 1 para ir para o Menu das Regioes Dos Eventos");
             System.out.println("Pressione 2 para ir para o Menu das Touradas");
             System.out.println("Pressione 3 para ir para o Menu dos Participantes");
+            System.out.println("Pressione 4 para ir para o Menu das entidades externas");
             System.out.println("Pressione qualquer outra tecla para encerrar");
             sWvar = Ler.umInt();
             switch (sWvar) {

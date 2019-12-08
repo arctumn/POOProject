@@ -1,21 +1,28 @@
 package com.POOProject;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Objects;
 
 public class EspectaculoDeRecortes extends Tourada implements Serializable {
     private int bilhete = 0;
     private int total = 0;
     private String local;
-
+    private ArrayList<Ganadaria> ga;
     public EspectaculoDeRecortes(Tourada t, Local l) {
         super(t.getAssistencia(),t.getDATA(),t.getNomeEvento());
         this.total = t.getAssistencia();
         this.local = l.getLocalidade();
+        ga = new ArrayList<>();
     }
 
-    public EspectaculoDeRecortes(int assistencia, String data, String nomeEvento) {
-        super(assistencia, data, nomeEvento);
+    public ArrayList<Ganadaria> getGa() {
+        return ga;
+    }
+
+    public void setGa(ArrayList<Ganadaria> ga) {
+        this.ga = ga;
     }
 
     public void setBilhete(int bilhete) {
@@ -65,6 +72,7 @@ public class EspectaculoDeRecortes extends Tourada implements Serializable {
                 "bilhete=" + bilhete +
                 ", total=" + total +
                 ", local='" + local + '\'' +
+                ", ga=" + ga +
                 ", assistencia=" + assistencia +
                 ", DATA='" + DATA + '\'' +
                 ", NomeEvento='" + NomeEvento + '\'' +
@@ -73,13 +81,14 @@ public class EspectaculoDeRecortes extends Tourada implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if ( this == o ) return true;
-        if ( !(o instanceof EspectaculoDeRecortes) ) return false;
-        if ( !super.equals(o) ) return false;
+        if (this == o) return true;
+        if (!(o instanceof EspectaculoDeRecortes)) return false;
+        if (!super.equals(o)) return false;
         EspectaculoDeRecortes that = (EspectaculoDeRecortes) o;
         return bilhete == that.bilhete &&
                 total == that.total &&
-                local.equals(that.local);
+                Objects.equals(local, that.local) &&
+                Objects.equals(ga, that.ga);
     }
 
     public static Comparator<EspectaculoDeRecortes> compareEspectaculoDeRecortesbyNome = (o1, o2) -> o1.getNomeEvento().compareTo(o2.getNomeEvento());
