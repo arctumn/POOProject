@@ -6,11 +6,21 @@ import java.util.Comparator;
 
 public class Largadas extends Tourada implements Serializable {
     private String local;
-    private ArrayList<Ganadaria> ga;
-    public Largadas(Tourada t, Local l) {
+    private ArrayList<Toiros> toiros = new ArrayList<>();
+    private ArrayList<Ganadaria> ga = new ArrayList<>();
+    public Largadas(Tourada t, Local l, Ganadaria g, Toiros toiro) {
         super(t.getAssistencia(),t.getDATA(),t.getNomeEvento());
         this.local = l.getLocalidade();
-        ga = new ArrayList<>();
+        ga.add(g);
+        toiros.add(toiro);
+    }
+
+    public ArrayList<Toiros> getToiros() {
+        return toiros;
+    }
+
+    public void setToiros(ArrayList<Toiros> toiros) {
+        this.toiros = toiros;
     }
 
     public ArrayList<Ganadaria> getGa() {
@@ -37,6 +47,7 @@ public class Largadas extends Tourada implements Serializable {
                 ", assistencia=" + assistencia +
                 ", DATA='" + DATA + '\'' +
                 ", NomeEvento='" + NomeEvento + '\'' +
+                ", Toiros='" + toiros + '\'' +
                 '}';
     }
 

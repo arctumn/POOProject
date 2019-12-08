@@ -8,17 +8,27 @@ public class Corridas extends Tourada implements Serializable {
     private int bilhete = 0;
     private int total = 0;
     private String local;
-    private ArrayList<Ganadaria> ga;
-    private ArrayList<GFA> gfa;
-    private ArrayList<Cavaleiro> ca;
-    public Corridas(Tourada t, Local l) {
+    private ArrayList<Toiros> toiros = new ArrayList<>();
+    private ArrayList<Ganadaria> ga = new ArrayList<>();
+    private ArrayList<GFA> gfa = new ArrayList<>();
+    private ArrayList<Cavaleiro> ca = new ArrayList<>();
+    public Corridas(Tourada t, Local l, GFA g1, Cavaleiro c,Ganadaria ga1,Toiros t1) {
         super(t.getAssistencia(),t.getDATA(),t.getNomeEvento());
         this.total = t.getAssistencia();
         this.local = l.getLocalidade();
-        gfa = new ArrayList<>();
-        ga = new ArrayList<>();
-        ca = new ArrayList<>();
+        ca.add(c);
+        gfa.add(g1);
+        ga.add(ga1);
+        toiros.add(t1);
         //esses ainda nao estao implementados nas outras classes portanto desativei no contrutor
+    }
+
+    public ArrayList<Toiros> getToiros() {
+        return toiros;
+    }
+
+    public void setToiros(ArrayList<Toiros> toiros) {
+        this.toiros = toiros;
     }
 
     public void setTotal(int total) {
@@ -100,6 +110,7 @@ public class Corridas extends Tourada implements Serializable {
                 ", assistencia=" + assistencia +
                 ", DATA='" + DATA + '\'' +
                 ", NomeEvento='" + NomeEvento + '\'' +
+                ", Toiros='" + toiros + '\'' +
                 '}';
     }
 

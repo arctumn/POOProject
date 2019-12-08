@@ -9,12 +9,26 @@ public class EspectaculoDeRecortes extends Tourada implements Serializable {
     private int bilhete = 0;
     private int total = 0;
     private String local;
-    private ArrayList<Ganadaria> ga;
-    public EspectaculoDeRecortes(Tourada t, Local l) {
+    private  ArrayList<Toiros> toiros = new ArrayList<>();
+    private ArrayList<Ganadaria> ga = new ArrayList<>();
+    public EspectaculoDeRecortes(Tourada t, Local l, Ganadaria g,Toiros toiro) {
         super(t.getAssistencia(),t.getDATA(),t.getNomeEvento());
         this.total = t.getAssistencia();
         this.local = l.getLocalidade();
-        ga = new ArrayList<>();
+        ga.add(g);
+        toiros.add(toiro);
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    public ArrayList<Toiros> getToiros() {
+        return toiros;
+    }
+
+    public void setToiros(ArrayList<Toiros> toiros) {
+        this.toiros = toiros;
     }
 
     public ArrayList<Ganadaria> getGa() {
@@ -29,7 +43,7 @@ public class EspectaculoDeRecortes extends Tourada implements Serializable {
         this.bilhete = bilhete;
     }
 
-    public void setLocal1(String local) {
+    public void setLocal(String local) {
         this.local = local;
     }
 
@@ -66,29 +80,19 @@ public class EspectaculoDeRecortes extends Tourada implements Serializable {
         System.out.println("A assistência atual é de " + aux + "%");
     }
 
+
     @Override
     public String toString() {
         return "EspectaculoDeRecortes{" +
                 "bilhete=" + bilhete +
                 ", total=" + total +
                 ", local='" + local + '\'' +
+                ", toiros=" + toiros +
                 ", ga=" + ga +
                 ", assistencia=" + assistencia +
                 ", DATA='" + DATA + '\'' +
                 ", NomeEvento='" + NomeEvento + '\'' +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof EspectaculoDeRecortes)) return false;
-        if (!super.equals(o)) return false;
-        EspectaculoDeRecortes that = (EspectaculoDeRecortes) o;
-        return bilhete == that.bilhete &&
-                total == that.total &&
-                Objects.equals(local, that.local) &&
-                Objects.equals(ga, that.ga);
     }
 
     public static Comparator<EspectaculoDeRecortes> compareEspectaculoDeRecortesbyNome = (o1, o2) -> o1.getNomeEvento().compareTo(o2.getNomeEvento());

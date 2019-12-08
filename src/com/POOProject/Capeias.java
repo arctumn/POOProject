@@ -8,15 +8,25 @@ public class Capeias extends Tourada implements Serializable {
     private int bilhete = 0;
     private int total = 0;
     private String local;
-    private ArrayList<GFA> gfa;
-    private ArrayList<Ganadaria> ga;
-    public Capeias(Tourada t, Local l) {
+    private ArrayList<Toiros> toiros = new ArrayList<>();
+    private ArrayList<GFA> gfa = new ArrayList<>();
+    private ArrayList<Ganadaria> ga = new ArrayList<>();
+    public Capeias(Tourada t, Local l, GFA g1, Ganadaria ga1, Toiros t1) {
         super(t.getAssistencia(),t.getDATA(),t.getNomeEvento());
         this.total = t.getAssistencia();
         this.local = l.getLocalidade();
-        gfa = new ArrayList<>();
-        ga = new ArrayList<>();
+        gfa.add(g1);
+        ga.add(ga1);
+        toiros.add(t1);
         //esses ainda nao estao implementados nas outras classes portanto desativei no contrutor
+    }
+
+    public ArrayList<Toiros> getToiros() {
+        return toiros;
+    }
+
+    public void setToiros(ArrayList<Toiros> toiros) {
+        this.toiros = toiros;
     }
 
     public ArrayList<GFA> getGfa() {
@@ -84,6 +94,7 @@ public class Capeias extends Tourada implements Serializable {
                 "bilhete=" + bilhete +
                 ", total=" + total +
                 ", local='" + local + '\'' +
+                ", toiros=" + toiros +
                 ", gfa=" + gfa +
                 ", ga=" + ga +
                 ", assistencia=" + assistencia +

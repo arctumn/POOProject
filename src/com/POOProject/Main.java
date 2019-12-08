@@ -24,7 +24,35 @@ public class Main {
         for (Tourada tourada : touradas){
             if (tourada.getNomeEvento().equals(s))
                 return tourada;
-            }
+        }
+        return null;
+    }
+    private static GFA findGFAByName(String s, ArrayList<GFA> gfas) {
+        for (GFA gfa : gfas){
+            if (gfa.getNome().equals(s))
+                return gfa;
+        }
+        return null;
+    }
+    private static Toiros findToirosByName(String s, ArrayList<Toiros> toiros) {
+        for (Toiros toiro : toiros){
+            if (toiro.getNome().equals(s))
+                return toiro;
+        }
+        return null;
+    }
+    private static Ganadaria findGanadariaByName(String s, ArrayList<Ganadaria> gas) {
+        for (Ganadaria ga : gas){
+            if (ga.getNome().equals(s))
+                return ga;
+        }
+        return null;
+    }
+    private static Cavaleiro findCavaleiroByName(String s, ArrayList<Cavaleiro> cavaleiros) {
+        for (Cavaleiro cavaleiro : cavaleiros){
+            if (cavaleiro.getNome().equals(s))
+                return cavaleiro;
+        }
         return null;
     }
     private static EspectaculoDeRecortes findEspectaculoDeRecortesByName(String s, ArrayList<EspectaculoDeRecortes>er){
@@ -50,13 +78,6 @@ public class Main {
             if (capeia.getNomeEvento().equals(s2))
                 return capeia;
             }
-        return null;
-    }
-    private static TouradasACorda findTouradasACordabyName(String s, ArrayList<TouradasACorda> tcs){
-        for (TouradasACorda tc : tcs){
-            if (tc.getNomeEvento().equals(s))
-                return tc;
-        }
         return null;
     }
     public static void main(String[] args) {
@@ -144,7 +165,7 @@ public class Main {
         touradas3.addAll(espetaculodeRecortes);
         sayTouradas(capeias,corridas,touradasACordas,largadas,espetaculodeRecortes);
         //O codigo dentro destes comentarios é de debug mas serve para verficar o conteudo dos ficheiros
-        int sWvar, sB,z1;
+        int sWvar, sB = 0,z1;
         do {
             System.out.println("Pressione 1 para ir para o Menu das Regioes Dos Eventos");
             System.out.println("Pressione 2 para ir para o Menu das Touradas");
@@ -290,8 +311,41 @@ public class Main {
                                             s2 = Ler.umaString();
                                             l = findLocalByName(s2,locais);
                                         }
-                                        capeias.add(new Capeias(t,l));
-                                        touradas3.add(new Capeias(t,l));
+                                        System.out.println("Qual ganaria quer?");
+                                        ganadarias.forEach(l1-> System.out.println(l1.getNome()));
+                                        s2 = Ler.umaString();
+                                        Ganadaria ga = findGanadariaByName(s2,ganadarias);
+                                        while(ga == null){
+                                            System.out.println("Essa Ganadaria nao existe");
+                                            System.out.println("Introduza outra");
+                                            ganadarias.forEach(l1-> System.out.println(l1.getNome()));
+                                            s2 = Ler.umaString();
+                                            ga = findGanadariaByName(s2,ganadarias);
+                                        }
+                                        System.out.println("Qual GFA quer?");
+                                        gfas.forEach(l1-> System.out.println(l1.getNome()));
+                                        s2 = Ler.umaString();
+                                        GFA gfa = findGFAByName(s2,gfas);
+                                        while(gfa == null){
+                                            System.out.println("Essa GFA nao existe");
+                                            System.out.println("Introduza outra");
+                                            gfas.forEach(l1-> System.out.println(l1.getNome()));
+                                            s2 = Ler.umaString();
+                                            gfa = findGFAByName(s2,gfas);
+                                        }
+                                        System.out.println("Qual o toiro?");
+                                        toiros.forEach(l1-> System.out.println(l1.getNome()));
+                                        s2 = Ler.umaString();
+                                        Toiros toiro = findToirosByName(s2,toiros);
+                                        while(toiro == null){
+                                            System.out.println("Esse Toiro nao existe");
+                                            System.out.println("Introduza outro");
+                                            toiros.forEach(l1-> System.out.println(l1.getNome()));
+                                            s2 = Ler.umaString();
+                                            toiro = findToirosByName(s2,toiros);
+                                        }
+                                        capeias.add(new Capeias(t,l,gfa,ga,toiro));
+                                        touradas3.add(new Capeias(t,l,gfa,ga,toiro));
                                         capeias.sort(Capeias.compareCapeiasbyNome);
                                         System.out.println("Adicionou a tourada " +t.getNomeEvento());
                                     }
@@ -309,8 +363,30 @@ public class Main {
                                             s2 = Ler.umaString();
                                             l = findLocalByName(s2,locais);
                                         }
-                                        touradasACordas.add(new TouradasACorda(t,l));
-                                        touradas3.add(new TouradasACorda(t,l));
+                                        System.out.println("Qual ganaria quer?");
+                                        ganadarias.forEach(l1-> System.out.println(l1.getNome()));
+                                        s2 = Ler.umaString();
+                                        Ganadaria ga = findGanadariaByName(s2,ganadarias);
+                                        while(ga == null){
+                                            System.out.println("Essa Ganadaria nao existe");
+                                            System.out.println("Introduza outra");
+                                            ganadarias.forEach(l1-> System.out.println(l1.getNome()));
+                                            s2 = Ler.umaString();
+                                            ga = findGanadariaByName(s2,ganadarias);
+                                        }
+                                        System.out.println("Qual o toiro?");
+                                        toiros.forEach(l1-> System.out.println(l1.getNome()));
+                                        s2 = Ler.umaString();
+                                        Toiros toiro = findToirosByName(s2,toiros);
+                                        while(toiro == null){
+                                            System.out.println("Esse Toiro nao existe");
+                                            System.out.println("Introduza outro");
+                                            toiros.forEach(l1-> System.out.println(l1.getNome()));
+                                            s2 = Ler.umaString();
+                                            toiro = findToirosByName(s2,toiros);
+                                        }
+                                        touradasACordas.add(new TouradasACorda(t,l,ga,toiro));
+                                        touradas3.add(new TouradasACorda(t,l,ga,toiro));
                                         touradasACordas.sort(TouradasACorda.compareTouradasACordabyNome);
                                         System.out.println("Adicionou a tourada " +t.getNomeEvento());
                                     }
@@ -329,8 +405,30 @@ public class Main {
                                             s2 = Ler.umaString();
                                             l = findLocalByName(s2,locais);
                                         }
-                                        espetaculodeRecortes.add(new EspectaculoDeRecortes(t,l));
-                                        touradas3.add(new EspectaculoDeRecortes(t,l));
+                                        System.out.println("Qual ganaria quer?");
+                                        ganadarias.forEach(l1-> System.out.println(l1.getNome()));
+                                        s2 = Ler.umaString();
+                                        Ganadaria ga = findGanadariaByName(s2,ganadarias);
+                                        while(ga == null){
+                                            System.out.println("Essa Ganadaria nao existe");
+                                            System.out.println("Introduza outra");
+                                            ganadarias.forEach(l1-> System.out.println(l1.getNome()));
+                                            s2 = Ler.umaString();
+                                            ga = findGanadariaByName(s2,ganadarias);
+                                        }
+                                        System.out.println("Qual o toiro?");
+                                        toiros.forEach(l1-> System.out.println(l1.getNome()));
+                                        s2 = Ler.umaString();
+                                        Toiros toiro = findToirosByName(s2,toiros);
+                                        while(toiro == null){
+                                            System.out.println("Esse Toiro nao existe");
+                                            System.out.println("Introduza outro");
+                                            toiros.forEach(l1-> System.out.println(l1.getNome()));
+                                            s2 = Ler.umaString();
+                                            toiro = findToirosByName(s2,toiros);
+                                        }
+                                        espetaculodeRecortes.add(new EspectaculoDeRecortes(t,l,ga,toiro));
+                                        touradas3.add(new EspectaculoDeRecortes(t,l,ga,toiro));
                                         espetaculodeRecortes.sort(EspectaculoDeRecortes.compareEspectaculoDeRecortesbyNome);
                                         System.out.println("Adicionou a tourada " +t.getNomeEvento());
                                     }
@@ -349,8 +447,52 @@ public class Main {
                                             s2 = Ler.umaString();
                                             l = findLocalByName(s2,locais);
                                         }
-                                        corridas.add(new Corridas(t,l));
-                                        touradas3.add(new Corridas(t,l));
+                                        System.out.println("Qual ganaria quer?");
+                                        ganadarias.forEach(l1-> System.out.println(l1.getNome()));
+                                        s2 = Ler.umaString();
+                                        Ganadaria ga = findGanadariaByName(s2,ganadarias);
+                                        while(ga == null){
+                                            System.out.println("Essa Ganadaria nao existe");
+                                            System.out.println("Introduza outra");
+                                            ganadarias.forEach(l1-> System.out.println(l1.getNome()));
+                                            s2 = Ler.umaString();
+                                            ga = findGanadariaByName(s2,ganadarias);
+                                        }
+                                        System.out.println("Qual GFA quer?");
+                                        gfas.forEach(l1-> System.out.println(l1.getNome()));
+                                        s2 = Ler.umaString();
+                                        GFA gfa = findGFAByName(s2,gfas);
+                                        while(gfa == null){
+                                            System.out.println("Essa GFA nao existe");
+                                            System.out.println("Introduza outra");
+                                            gfas.forEach(l1-> System.out.println(l1.getNome()));
+                                            s2 = Ler.umaString();
+                                            gfa = findGFAByName(s2,gfas);
+                                        }
+                                        System.out.println("Qual Cavaleiro quer?");
+                                        cavaleiros.forEach(l1-> System.out.println(l1.getNome()));
+                                        s2 = Ler.umaString();
+                                        Cavaleiro ca = findCavaleiroByName(s2,cavaleiros);
+                                        while(ca == null){
+                                            System.out.println("Esse Cavaleiro nao existe");
+                                            System.out.println("Introduza outro");
+                                            cavaleiros.forEach(l1-> System.out.println(l1.getNome()));
+                                            s2 = Ler.umaString();
+                                            ca = findCavaleiroByName(s2,cavaleiros);
+                                        }
+                                        System.out.println("Qual o toiro?");
+                                        toiros.forEach(l1-> System.out.println(l1.getNome()));
+                                        s2 = Ler.umaString();
+                                        Toiros toiro = findToirosByName(s2,toiros);
+                                        while(toiro == null){
+                                            System.out.println("Esse Toiro nao existe");
+                                            System.out.println("Introduza outro");
+                                            toiros.forEach(l1-> System.out.println(l1.getNome()));
+                                            s2 = Ler.umaString();
+                                            toiro = findToirosByName(s2,toiros);
+                                        }
+                                        corridas.add(new Corridas(t,l,gfa,ca,ga,toiro));
+                                        touradas3.add(new Corridas(t,l,gfa,ca,ga,toiro));
                                         corridas.sort(Corridas.compareCorridasbyNome);
                                         System.out.println("Adicionou a tourada " +t.getNomeEvento());
                                     }
@@ -368,8 +510,30 @@ public class Main {
                                             s2 = Ler.umaString();
                                             l = findLocalByName(s2,locais);
                                         }
-                                        largadas.add( new Largadas(t, l));
-                                        touradas3.add(new Largadas(t,l));
+                                        System.out.println("Qual ganaria quer?");
+                                        ganadarias.forEach(l1-> System.out.println(l1.getNome()));
+                                        s2 = Ler.umaString();
+                                        Ganadaria ga = findGanadariaByName(s2,ganadarias);
+                                        while(ga == null){
+                                            System.out.println("Essa Ganadaria nao existe");
+                                            System.out.println("Introduza outra");
+                                            ganadarias.forEach(l1-> System.out.println(l1.getNome()));
+                                            s2 = Ler.umaString();
+                                            ga = findGanadariaByName(s2,ganadarias);
+                                        }
+                                        System.out.println("Qual o toiro?");
+                                        toiros.forEach(l1-> System.out.println(l1.getNome()));
+                                        s2 = Ler.umaString();
+                                        Toiros toiro = findToirosByName(s2,toiros);
+                                        while(toiro == null){
+                                            System.out.println("Esse Toiro nao existe");
+                                            System.out.println("Introduza outro");
+                                            toiros.forEach(l1-> System.out.println(l1.getNome()));
+                                            s2 = Ler.umaString();
+                                            toiro = findToirosByName(s2,toiros);
+                                        }
+                                        largadas.add( new Largadas(t,l,ga,toiro));
+                                        touradas3.add(new Largadas(t,l,ga,toiro));
                                         largadas.sort(Largadas.compareLargadasbyNome);
                                         System.out.println("Adicionou a tourada " + t.getNomeEvento());
                                     }
@@ -575,6 +739,7 @@ public class Main {
                                                 System.out.println("Alterou a data para "+elementoAMecher.getDATA());
                                                 break;
                                             }
+
                                             default:{
                                                 System.out.println("Saiu do menu das alterações");
                                                 dumbvar2 = -1;
@@ -618,6 +783,11 @@ public class Main {
                         break;
                     }
                     case 3: {
+                        do{
+                            System.out.println("Pressione 1 para o menu das GFAS");
+                            System.out.println("Pressione 2 para o menu dos Cavaleiros");
+                            System.out.println("Pressione outro numero para sair");
+                        }while(sB != -1);
                         //fazer em 3
                         System.out.println(3);
                         break;
