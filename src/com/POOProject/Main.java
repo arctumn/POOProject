@@ -85,7 +85,7 @@ public class Main {
         ObjectInputStream obIP1, obIP2, obIP3, obIP4,obIP5,obIP6,obIP7,obIP8,obIP9,obIP10;
         FileOutputStream os1, os2, os3, os4,os5,os6,os7,os8,os9,os10;
         ObjectOutputStream obOS1, obOS2, obOS3, obOS4,obOS5,obOS6,obOS7,obOS8,obOS9,obOS10;
-        int dumbvar,dumbvar2;
+        int dumbvar = 0,dumbvar2;
         String s, s1,s2;
         ArrayList<Local> locais = new ArrayList<>();
         ArrayList<Tourada> touradas2 = new ArrayList<>();
@@ -787,6 +787,165 @@ public class Main {
                             System.out.println("Pressione 1 para o menu das GFAS");
                             System.out.println("Pressione 2 para o menu dos Cavaleiros");
                             System.out.println("Pressione outro numero para sair");
+                            sB = Ler.umInt();
+                            switch (sB){
+                                case 1:{
+                                    do {
+                                        System.out.println("Pressione 1 para criar uma GFA");
+                                        System.out.println("Pressione 2 para remover uma GFA");
+                                        System.out.println("Pressione 3 para mostar uma GFA");
+                                        System.out.println("Pressione 4 para mostrar todas as GFAS");
+                                        System.out.println("Pressione outro numero qualquer para sair");
+                                        dumbvar = Ler.umInt();
+                                        switch (dumbvar){
+                                            case 1:{
+                                                System.out.println("Qual o nome da GFA");
+                                                s = Ler.umaString();
+                                                System.out.println("O Local");
+                                                s1 = Ler.umaString();
+                                                locais.forEach(l -> System.out.println(l.getLocalidade()));
+                                                Local l = findLocalByName(s1,locais);
+                                                if(l == null){
+                                                    System.out.println("Não existe essa localidade");
+                                                    System.out.println("Escolha outra");
+                                                    locais.forEach(l1 -> System.out.println(l1.getLocalidade()));
+                                                    s1 = Ler.umaString();
+                                                    l = findLocalByName(s1,locais);
+                                                }
+                                                System.out.println("A idade");
+                                                System.out.println("O chefe");
+                                                gfas.add(new GFA(s,Ler.umInt(),l, Ler.umaString()));
+                                                System.out.println("Adicionou a gfa: "+s);
+                                                break;
+                                            }
+                                            case 2:{
+                                                System.out.println("Qual a GFA?");
+                                                gfas.forEach(g -> System.out.println(g.getNome()));
+                                                s = Ler.umaString();
+                                                GFA rem = findGFAByName(s,gfas);
+                                                if (rem == null){
+                                                    System.out.println("Não existe essa GFA");
+                                                    break;
+                                                }
+                                                gfas.remove(rem);
+                                                System.out.println("Removeu: "+rem.getNome());
+                                                break;
+                                            }
+                                            case 3:{
+                                                System.out.println("Qual a GFA?");
+                                                gfas.forEach(g -> System.out.println(g.getNome()));
+                                                s = Ler.umaString();
+                                                GFA rem = findGFAByName(s,gfas);
+                                                if (rem == null){
+                                                    System.out.println("Não existe essa GFA");
+                                                    break;
+                                                }
+                                                System.out.println(rem);
+                                                break;
+                                            }
+                                            case 4: {
+                                                System.out.println(gfas);
+                                                break;
+                                            }
+                                        }
+                                    }while(dumbvar != -1);
+                                    break;
+                                }
+                                case 2:{
+                                    do{
+                                        System.out.println("Pressione 1 para criar um cavaleiro");
+                                        System.out.println("Pressione 2 para remover um cavaleiro");
+                                        System.out.println("Pressione 3 para mostar um cavaleiro");
+                                        System.out.println("Pressione 4 para adicionar espetaculos");
+                                        System.out.println("Pressione 5 para mostrar todos os caveleiros");
+                                        dumbvar = Ler.umInt();
+                                        switch (dumbvar){
+                                            case 1:{
+                                                System.out.println("Qual o nome");
+                                                s = Ler.umaString();
+                                                System.out.println("Qual a localidade?");
+                                                locais.forEach(l -> System.out.println(l.getLocalidade()));
+                                                s1 = Ler.umaString();
+                                                Local l = findLocalByName(s1,locais);
+                                                if(l == null){
+                                                    System.out.println("Essa localidade nao existe");
+                                                    System.out.println("Escolha outra");
+                                                    locais.forEach(l1 -> System.out.println(l1.getLocalidade()));
+                                                    s1 = Ler.umaString();
+                                                    l = findLocalByName(s1,locais);
+                                                }
+                                                cavaleiros.add(new Cavaleiro(s,Ler.umInt(),l,0));
+                                                System.out.println("Criou o cavaleiro "+s);
+                                                break;
+                                            }
+                                            case 2:{
+                                                System.out.println("Qual cavaleiro?");
+                                                cavaleiros.forEach(c -> System.out.println(c.getNome()));
+                                                s = Ler.umaString();
+                                                Cavaleiro cav = findCavaleiroByName(s,cavaleiros);
+                                                if(cav == null){
+                                                    System.out.println("Nao existe esse cavaleiro");
+                                                    break;
+                                                }
+                                                cavaleiros.remove(cav);
+                                                System.out.println("Removeu "+cav.getNome());
+                                                break;
+                                            }
+                                            case 3:{
+                                                System.out.println("Qual cavaleiro?");
+                                                cavaleiros.forEach(c -> System.out.println(c.getNome()));
+                                                s = Ler.umaString();
+                                                Cavaleiro cav = findCavaleiroByName(s,cavaleiros);
+                                                if(cav == null){
+                                                    System.out.println("Nao existe esse cavaleiro");
+                                                    break;
+                                                }
+                                                System.out.println(cav);
+                                                break;
+                                            }
+                                            case 4:{
+                                                System.out.println("Qual cavaleiro?");
+                                                cavaleiros.forEach(c -> System.out.println(c.getNome()));
+                                                s = Ler.umaString();
+                                                Cavaleiro cav = findCavaleiroByName(s,cavaleiros);
+                                                if(cav == null){
+                                                    System.out.println("Nao existe esse cavaleiro");
+                                                    break;
+                                                }
+                                                System.out.println("Quantos espetaculos quer adicionar ao "+cav.getNome());
+                                                cav.setnEspetaculos(Ler.umInt());
+                                                break;
+                                            }
+                                            case 5:{
+                                                System.out.println(cavaleiros);
+                                                break;
+                                            }
+                                            default:{
+                                                System.out.println("Saiu do menu dos cavaleios");
+                                                dumbvar = -1;
+                                                break;
+                                            }
+                                        }
+                                    }while (dumbvar != -1);
+                                    break;
+                                }
+                                default:{
+                                    System.out.println("Saiu do menu dos Participantes");
+                                    try{
+                                        os7 = new FileOutputStream(f7);
+                                        obOS7 = new ObjectOutputStream(os7);
+                                        obOS7.writeObject(gfas);
+                                        os7.close();
+                                        os9 = new FileOutputStream(f9);
+                                        obOS9 = new ObjectOutputStream(os9);
+                                        obOS9.writeObject(cavaleiros);
+                                        os9.close();
+                                    }catch(IOException e){
+                                        System.out.println(e.getMessage());
+                                    }
+                                    sB = -1;
+                                }
+                            }
                         }while(sB != -1);
                         //fazer em 3
                         System.out.println(3);
