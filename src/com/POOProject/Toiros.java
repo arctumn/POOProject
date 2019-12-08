@@ -51,7 +51,7 @@ public class Toiros {
 
     @Override
     public String toString() {
-        return "Toiros{" + "Nome:" + nome + ", peso: " + peso + ", quantidade de Toiros:" + nT + ", idade" + idade + '}';
+        return "Toiros{" + "Nome:" + nome + ", peso: " + peso + ", quantidade de Toiros:" + nT + ", idade:" + idade + '}';
     }
 
     @Override

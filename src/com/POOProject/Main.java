@@ -150,21 +150,15 @@ public class Main {
             obIP10 = new ObjectInputStream(is10);
             toiros = (ArrayList<Toiros>)obIP10.readObject();
             is10.close();
-        } catch (IOException | NullPointerException e) {
-             System.out.println("Existe ficheiros vazios");
+        } catch (IOException | NullPointerException ignored) {
             }catch (ClassNotFoundException e){
             System.out.println("Nao encontrei uma classe: "+e.getMessage());
         }
-        locais.forEach(l-> System.out.println("Cidade: "+l.getLocalidade()));
-        // O codigo dentro destes comentarios é de debug mas serve para verficar o conteudo dos ficheiros
-        //Alguns metodos ainda teem bugs para testarem uma classe de toiros usem a Capeia por estar sem bugs ja
         touradas3.addAll(corridas);
         touradas3.addAll(largadas);
         touradas3.addAll(touradasACordas);
         touradas3.addAll(capeias);
         touradas3.addAll(espetaculodeRecortes);
-        sayTouradas(capeias,corridas,touradasACordas,largadas,espetaculodeRecortes);
-        //O codigo dentro destes comentarios é de debug mas serve para verficar o conteudo dos ficheiros
         int sWvar, sB = 0,z1;
         do {
             System.out.println("\n\t 1 | Menu das Regioes Dos Eventos" +
@@ -875,6 +869,7 @@ public class Main {
                                                     s1 = Ler.umaString();
                                                     l = findLocalByName(s1,locais);
                                                 }
+                                                System.out.println("Qual a idade?");
                                                 cavaleiros.add(new Cavaleiro(s,Ler.umInt(),l,0));
                                                 System.out.println("Criou o cavaleiro "+s);
                                                 break;
@@ -966,6 +961,7 @@ public class Main {
                                                 "\t 2 | Remover 1 ganadaria\n" +
                                                 "\t 3 | Mostrar 1 ganadaria\n" +
                                                 "\t 4 | Mostrar todas as ganadarias\n" +
+                                                "\t 5 | Adicionar 1 touro a ganadaria\n" +
                                                 "\t _ | Returnar ao menu anterior\n");
                                         dumbvar2 = Ler.umInt();
                                         switch (dumbvar2){
@@ -1020,6 +1016,23 @@ public class Main {
                                                 break;
                                             case 4:
                                                 System.out.println(ganadarias);
+                                                break;
+                                            case 5:
+                                                System.out.println("Qual ganadaria?");
+                                                ganadarias.forEach(ga2 -> System.out.println(ga2.getNome()));
+                                                Ganadaria g = findGanadariaByName(Ler.umaString(),ganadarias);
+                                                if(g == null) {
+                                                    System.out.println("Nao existe essa ganadaria");
+                                                    break;
+                                                }
+                                                    System.out.println("Qual toiro?");
+                                                  Toiros toi = findToirosByName(Ler.umaString(),toiros);
+                                                  if(toi == null){
+                                                      System.out.println("Nao existe esse toiro");
+                                                      break;
+                                                  }
+                                                  g.getToiros().add(toi);
+                                                System.out.println("Adicionou o toiro: "+toi.getNome());
                                                 break;
                                             default:
                                                 dumbvar2 = -1;
@@ -1078,7 +1091,7 @@ public class Main {
                                             break;
                                     }
                                 }while (dumbvar != -1);
-                                   default:   
+                                default:
                                             System.out.println("Saiu do menu entidades externas");
                                             try{
                                                 os8 = new FileOutputStream(f8);
