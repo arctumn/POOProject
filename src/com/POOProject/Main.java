@@ -171,17 +171,17 @@ public class Main {
             System.out.println("Pressione 2 para ir para o Menu das Touradas");
             System.out.println("Pressione 3 para ir para o Menu dos Participantes");
             System.out.println("Pressione 4 para ir para o Menu das entidades externas");
-            System.out.println("Pressione qualquer outra tecla para encerrar");
+            System.out.println("Pressione qualquer outra tecla para encerrar\n");
             sWvar = Ler.umInt();
             switch (sWvar) {
                     case 1: {
                     do {
-                        System.out.println("Pressione 1 para Adicionar 1 novo local");
-                        System.out.println("Pressione 2 para remover 1 local pelo nome");
-                        System.out.println("Pressione 3 para Vizualizar 1 local");
-                        System.out.println("Pressione 4 para Mostar todos os locais");
-                        System.out.println("Pressione 5 para pesquisar uma tourada pelo local");
-                        System.out.println("Pressione qualquer outra tecla para encerrar");
+                        System.out.println(" 1 | Adicionar 1 novo local");
+                        System.out.println(" 2 | Remover 1 local pelo nome");
+                        System.out.println(" 3 | Vizualizar 1 local");
+                        System.out.println(" 4 | Mostar todos os locais");
+                        System.out.println(" 5 | Pesquisar uma tourada pelo local");
+                        System.out.println(" _ | retornar ao menu anterior\n");
                         sB = Ler.umInt();
                         switch (sB) {
                             case 1: {
@@ -736,7 +736,7 @@ public class Main {
                                             case 3:{
                                                 System.out.println("Para que data pretende alterar?");
                                                 elementoAMecher.setDATA(Ler.umaString());
-                                                System.out.println("Alterou a data para "+elementoAMecher.getDATA());
+                                                System.out.println("Alterou a data para "+ elementoAMecher.getDATA());
                                                 break;
                                             }
 
@@ -951,6 +951,43 @@ public class Main {
                         System.out.println(3);
                         break;
                     }
+                    case 4://1 menu: 2 cases 1 default
+                        do{
+                            System.out.println("\nSelecione o numero respetivo a opção desejada:\n" +
+                                    "\t 1 | Ganadarias\n" +
+                                    "\t 2 | Toiros\n" +
+                                    "\t _ | Returnar ao menu anterior\n");
+                            dumbvar = Ler.umInt();
+                            switch (dumbvar){
+                                case 1: //ganadarias
+                                    do {
+                                        System.out.println("\n\t 1 | Adicionar 1 ganadaria\n" +
+                                                "\t 2 | Remover 1 ganadaria\n" +
+                                                "\t 3 | Mostrar 1 ganadaria\n" +
+                                                "\t 4 | Mostrar todas as ganadarias\n" +
+                                                "\t _ | Returnar ao menu anterior\n");
+                                        dumbvar2 = Ler.umInt();
+                                        switch (dumbvar2){
+                                            case 1:
+
+                                            case 2:
+
+                                            case 3:
+
+                                            case 4:
+
+                                            default:
+                                                dumbvar2 = -1;
+                                                System.out.println("\nSaiu do menu ganadarias\n");
+                                        }
+                                    }while(dumbvar2 != -1);
+                                    break;
+                                case 2: // Toiros
+
+                                default:
+                            }
+                        }while(dumbvar != -1);
+                        break;
                     default: {
                         System.out.println("Fechou o programa");
                         sWvar = -1;
