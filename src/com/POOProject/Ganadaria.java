@@ -6,17 +6,17 @@ import java.util.Objects;
 
 public class Ganadaria {
     private String nome;
-    private ArrayList<Toiros> toiros;
+    private ArrayList<Toiros> toiros = new ArrayList<>();
     private static int nVezes = 0;
     private int qToiros; //Quantos toiros há nesta Ganadaria?
     private String Origem;
 
-    public Ganadaria(String n, ArrayList<Toiros> t, String o){
+    public Ganadaria(String n, Toiros t, Local l){
         this.nome = n;
         nVezes++;
-        this.Origem = o;
-        this.toiros = t;
-        qToiros = t.size();
+        this.Origem = l.getLocalidade();
+        this.toiros.add(t);
+        qToiros = toiros.size();
     }
 
     public String getNome() {

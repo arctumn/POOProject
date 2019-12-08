@@ -969,13 +969,57 @@ public class Main {
                                         dumbvar2 = Ler.umInt();
                                         switch (dumbvar2){
                                             case 1:
-
+                                                System.out.println("Qual o nome?");
+                                                s = Ler.umaString();
+                                                System.out.println("Qual touro?");
+                                                toiros.forEach(t -> System.out.println(t.getNome()));
+                                                s1 = Ler.umaString();
+                                                Toiros toiro = findToirosByName(s1,toiros);
+                                                if(toiro == null){
+                                                    System.out.println("Nao existe esse toiro");
+                                                    System.out.println("Escolha outro");
+                                                    toiros.forEach(t1 -> System.out.println(t1.getNome()));
+                                                    s1 = Ler.umaString();
+                                                    toiro = findToirosByName(s1,toiros);
+                                                }
+                                                System.out.println("Qual local?");
+                                                s1 = Ler.umaString();
+                                                locais.forEach(l -> System.out.println(l.getLocalidade()));
+                                                Local loc = findLocalByName(s1,locais);
+                                                if(loc == null){
+                                                    System.out.println("Nao existe esse local");
+                                                    System.out.println("Escolha outro");
+                                                    locais.forEach(l1 -> System.out.println(l1.getLocalidade()));
+                                                    s1 = Ler.umaString();
+                                                    loc = findLocalByName(s1,locais);
+                                                }
+                                                ganadarias.add(new Ganadaria(s,toiro,loc));
+                                                System.out.println("Criou a ganadaria "+s);
+                                                break;
                                             case 2:
-
+                                                System.out.println("Qual quer remover?");
+                                                s = Ler.umaString();
+                                                Ganadaria ga = findGanadariaByName(s,ganadarias);
+                                                if(ga == null){
+                                                    System.out.println("Nao existe essa ganadaria");
+                                                    break;
+                                                }
+                                                ganadarias.remove(ga);
+                                                System.out.println("Removeu: "+ga.getNome());
+                                                break;
                                             case 3:
-
+                                                System.out.println("Qual quer procurar?");
+                                                s = Ler.umaString();
+                                                Ganadaria ga1 = findGanadariaByName(s,ganadarias);
+                                                if(ga1 == null){
+                                                    System.out.println("Nao existe essa ganadaria");
+                                                    break;
+                                                }
+                                                System.out.println(ga1);
+                                                break;
                                             case 4:
-
+                                                System.out.println(ganadarias);
+                                                break;
                                             default:
                                                 dumbvar2 = -1;
                                                 System.out.println("\nSaiu do menu ganadarias\n");
@@ -983,7 +1027,56 @@ public class Main {
                                     }while(dumbvar2 != -1);
                                     break;
                                 case 2: // Toiros
-
+                                do  {
+                                    System.out.println("\n\t 1 | Adicionar 1 toiro\n" +
+                                            "\t 2 | Remover 1 toiro\n" +
+                                            "\t 3 | Mostrar 1 toiro\n" +
+                                            "\t 4 | Mostrar todas os toiros\n" +
+                                            "\t _ | Returnar ao menu anterior\n");
+                                    dumbvar = Ler.umInt();
+                                    switch (dumbvar){
+                                        case 1: {
+                                            System.out.println("Qual nome");
+                                            s = Ler.umaString();
+                                            System.out.println("Qual peso");
+                                            System.out.println("Qual idade");
+                                            toiros.add(new Toiros(s, Ler.umInt(), Ler.umInt()));
+                                            System.out.println("Adicionou o toiro "+s);
+                                            break;
+                                        }
+                                        case 2: {
+                                            System.out.println("Qual o nome");
+                                            s = Ler.umaString();
+                                            Toiros toiro = findToirosByName(s,toiros);
+                                            if(toiro == null){
+                                                System.out.println("Nao existe esse toiro");
+                                                break;
+                                            }
+                                            toiros.remove(toiro);
+                                            System.out.println("Removeu"+toiro.getNome());
+                                            break;
+                                        }
+                                        case 3: {
+                                            System.out.println("Qual o nome");
+                                            s = Ler.umaString();
+                                            Toiros toiro = findToirosByName(s,toiros);
+                                            if(toiro == null){
+                                                System.out.println("Nao existe esse toiro");
+                                                break;
+                                            }
+                                            System.out.println(toiro);
+                                            break;
+                                        }
+                                        case 4:{
+                                            System.out.println(toiros);
+                                            break;
+                                        }
+                                        default:
+                                            System.out.println("Saiu do menu dos toiros");
+                                            dumbvar = -1;
+                                            break;
+                                    }
+                                }while (dumbvar != -1);
                                 default:
                             }
                         }while(dumbvar != -1);
