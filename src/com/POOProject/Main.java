@@ -1078,7 +1078,22 @@ public class Main {
                                             break;
                                     }
                                 }while (dumbvar != -1);
-                                default:
+                                   default:   
+                                            System.out.println("Saiu do menu entidades externas");
+                                            try{
+                                                os8 = new FileOutputStream(f8);
+                                                obOS8 = new ObjectOutputStream(os8);
+                                                obOS8.writeObject(ganadarias);
+                                                os8.close();
+                                                os10 = new FileOutputStream(f10);
+                                                obOS10 = new ObjectOutputStream(os10);
+                                                obOS10.writeObject(toiros);
+                                                os10.close();
+                                            }catch(IOException e){
+                                                System.out.println(e.getMessage());
+                                            }
+                                            dumbvar = -1;
+                                            break;
                             }
                         }while(dumbvar != -1);
                         break;
